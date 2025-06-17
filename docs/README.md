@@ -44,9 +44,9 @@ Break down the implementation into three parts: input logic, output logic, and d
 - Domain (Write the domain logic checklist by component or class)
     - [x] Number
         - [x] Make sure the number is within the valid range.
-    - [ ] Winning Numbers
-        - [ ] Make sure the numbers are not duplicated.
-        - [ ] The selection must include 6 winning numbers.
+    - [x] Winning Numbers
+        - [x] Make sure the numbers are not duplicated.
+        - [x] The selection must include 6 winning numbers.
     - [ ] Bonus Number
         - [ ] It must not be duplicated with the winning numbers.
     - [ ] Lotto Issuer
