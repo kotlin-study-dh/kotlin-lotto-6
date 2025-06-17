@@ -12,6 +12,12 @@ class Lotto(
         }
     }
 
+    operator fun contains(number: LottoNumber): Boolean = number in numbers
+
+    fun getMatchCount(other: Lotto): Int {
+        return numbers.count { it in other.numbers }
+    }
+
     fun getSortedNumbers(): List<LottoNumber> = numbers.sortedBy { it.number }
 
     companion object {
