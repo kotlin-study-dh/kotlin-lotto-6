@@ -6,7 +6,7 @@ class WinningNumbers private constructor(winningNumbers: List<Number>) {
         const val WINNING_NUMBER_COUNT = 6
 
         fun fromInts(vararg numbers: Int): WinningNumbers {
-            require(numbers.distinct().size == WINNING_NUMBER_COUNT) {
+            if (numbers.distinct().size != WINNING_NUMBER_COUNT) {
                 "Winning numbers must be $WINNING_NUMBER_COUNT unique values"
             }
 
@@ -16,10 +16,10 @@ class WinningNumbers private constructor(winningNumbers: List<Number>) {
     }
 
     init {
-        if (winningNumbers.size != winningNumbers.distinct().size) {
+        require(winningNumbers.size == winningNumbers.distinct().size) {
             throw IllegalArgumentException("Winning numbers must not contain duplicates")
         }
-        if (winningNumbers.size != WINNING_NUMBER_COUNT) {
+        require(winningNumbers.size == WINNING_NUMBER_COUNT) {
             throw IllegalArgumentException("Winning numbers size must equal to $WINNING_NUMBER_COUNT")
         }
     }

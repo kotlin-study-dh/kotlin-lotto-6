@@ -8,7 +8,7 @@ open class Number(val number: Int) {
     }
 
     init {
-        if (number !in MIN_LIMIT_NUMBER..MAX_LIMIT_NUMBER) {
+        require(number in MIN_LIMIT_NUMBER..MAX_LIMIT_NUMBER) {
             throw IllegalArgumentException("The number must be between $MIN_LIMIT_NUMBER and $MAX_LIMIT_NUMBER")
         }
     }
