@@ -1,6 +1,6 @@
 package lotto.domain
 
-class Number(val number: Int) {
+open class Number(val number: Int) {
 
     companion object {
         const val MIN_LIMIT_NUMBER = 1

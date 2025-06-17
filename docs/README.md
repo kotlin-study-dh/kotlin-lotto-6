@@ -47,8 +47,7 @@ Break down the implementation into three parts: input logic, output logic, and d
     - [x] Winning Numbers
         - [x] Make sure the numbers are not duplicated.
         - [x] The selection must include 6 winning numbers.
-    - [ ] Bonus Number
-        - [ ] It must not be duplicated with the winning numbers.
+    - [x] Bonus Number
     - [ ] Lotto Issuer
         - [ ] Generate several Lotto Numbers
     - [ ] Lotto Inspector
