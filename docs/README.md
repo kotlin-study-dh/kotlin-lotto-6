@@ -42,15 +42,13 @@ Break down the implementation into three parts: input logic, output logic, and d
         - [ ] The revenue rate should be rounded to one decimal place.
 
 - Domain (Write the domain logic checklist by component or class)
-    - [ ] Number
+    - [x] Number
         - [x] Make sure the number is within the valid range.
-        - [ ] Two types of Number
-            - [ ] Winning Number
-            - [ ] Bonus Number
-    - [ ] Lotto Numbers
+    - [ ] Winning Numbers
         - [ ] Make sure the numbers are not duplicated.
         - [ ] The selection must include 6 winning numbers.
-        - [ ] One additional bonus number can also be added.
+    - [ ] Bonus Number
+        - [ ] It must not be duplicated with the winning numbers.
     - [ ] Lotto Issuer
         - [ ] Generate several Lotto Numbers
     - [ ] Lotto Inspector
