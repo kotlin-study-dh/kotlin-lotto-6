@@ -2,35 +2,40 @@
 
 > Define: One Number on a lottery ball
 
-- [ ] validate number is in the range 1 .. 45
+- [x] validate number is in the range 1 .. 45
 
 ## Lotto
 
 > Define: A collection of six unique LottoNumber (single game)
 
-- [ ] validate collection size is 6
-- [ ] validate unique LottoNumber
-
-## LottoTicket
-
-> Define: A collection of Lotto purchased by user
+- [x] validate collection size is 6
+- [x] validate unique LottoNumber
 
 ## LottoMachine
 
-- [ ] create LottoTicket
+- [ ] create Lotto list from LottoPurchaseAmount
 
-## PurchaseAmount
+## NumberGenerator
 
-- [ ] validate amount is positive
-- [ ] validate amount is multiple of 1,000
-- [ ] calculate number of purchased Lotto
-- [ ] calculate yield rate
+- [ ] generate random LottoNumber in the range 1 .. 45
+
+## LottoPurchaseAmount
+
+- [x] validate amount is greater than 1,000
+- [x] validate amount is multiple of 1,000
+- [x] calculate number of purchased Lotto
+- [x] calculate rate of return
+
+## Prize
+
+- [x] define prize for each rank
 
 ## WinningLotto
 
 > Define: A Lotto(winning numbers) and a LottoNumber(bonus number)
 
-- [ ] validate bonus number is not included in the winning numbers
+- [x] validate bonus number is not included in the winning numbers
+- [x] compare winning numbers with Lotto
 
 ## InputView
 
