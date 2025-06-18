@@ -10,11 +10,13 @@ object InputView {
         return purchaseAmount.toIntOrNull() ?: throw IllegalArgumentException("Purchase amount must be a number.")
     }
 
-    fun readWinningNumbers(): List<String> {
+    fun readWinningNumbers(): List<Int> {
         println("Please enter winner numbers.")
         val winningNumbers = readlnOrNull() ?: throw IllegalArgumentException("You need to enter winner numbers.")
         println()
-        return winningNumbers.split(DEFAULT_DELIMITER).map { it.trim() }
+        return winningNumbers.split(DEFAULT_DELIMITER)
+            .map { it.trim() }
+            .map { it.toIntOrNull() ?: throw IllegalArgumentException("Winning numbers must be numbers.") }
     }
 
     fun readBonusNumber(): Int {
