@@ -7,9 +7,17 @@ object InputView {
         return readln()
     }
 
-    fun readWinningNumbers(): String {
+    fun readWinningNumbers(): List<Int> {
         println("Please enter the winning numbers.")
-        return readln()
+
+        try {
+            return readln().split(",")
+                .map { it -> it.trim() }
+                .map { it -> it.toInt() }
+                .toList()
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException("Only integer numbers allowed.")
+        }
     }
 
     fun readBonusNumber(): String {
