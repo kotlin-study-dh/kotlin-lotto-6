@@ -17,7 +17,7 @@ enum class LottoRank(
     companion object {
         fun of(matchCount: Int, matchesBonus: Boolean) =
             LottoRank.entries.find {
-                it.matchCount == matchCount && (!it.isBonusRequired || matchesBonus)
+                (it.matchCount == matchCount) && (!it.isBonusRequired || matchesBonus)
             } ?: NO_PRIZE
     }
 }
