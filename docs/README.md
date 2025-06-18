@@ -48,8 +48,8 @@ Break down the implementation into three parts: input logic, output logic, and d
         - [x] Make sure the numbers are not duplicated.
         - [x] The selection must include 6 winning numbers.
     - [x] Bonus Number
-    - [ ] Lotto Issuer
-        - [ ] Generate several Lotto Numbers
+    - [x] Lotto Issuer
+        - [x] Generate several Lotto Numbers
     - [ ] Lotto Inspector
         - [ ] Determine the Lotto grade.
     - [ ] Lotto Game
