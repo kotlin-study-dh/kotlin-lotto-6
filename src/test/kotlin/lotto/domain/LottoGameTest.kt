@@ -11,9 +11,9 @@ class LottoGameTest {
     companion object {
         val validLottos = Lottos(
             listOf(
-                Lotto(listOf(1, 2, 3, 4, 5, 6)),
-                Lotto(listOf(11, 12, 13, 14, 15, 16)),
-                Lotto(listOf(21, 22, 23, 24, 25, 26)),
+                Lotto.ofNumbers(1, 2, 3, 4, 5, 6),
+                Lotto.ofNumbers(11, 12, 13, 14, 15, 16),
+                Lotto.ofNumbers(21, 22, 23, 24, 25, 26),
             )
         )
     }
@@ -21,11 +21,11 @@ class LottoGameTest {
     @Test
     fun `throw exception when winning number has invalid size`() {
         assertThrows<IllegalArgumentException>("There must be ${LottoConstants.NUMBERS_AMOUNT} winning numbers.") {
-            LottoGame(validLottos, WinningNumbers(listOf(1, 2, 3, 4, 5)), 45)
+            LottoGame(validLottos, WinningNumbers.ofNumbers(listOf(1, 2, 3, 4, 5)), LottoNumber(45))
         }
 
         assertThrows<IllegalArgumentException>("There must be ${LottoConstants.NUMBERS_AMOUNT} winning numbers.") {
-            LottoGame(validLottos, WinningNumbers(listOf(1, 2, 3, 4, 5, 6, 7)), 45)
+            LottoGame(validLottos, WinningNumbers.ofNumbers(listOf(1, 2, 3, 4, 5, 6, 7)), LottoNumber(45))
         }
     }
 
@@ -33,7 +33,7 @@ class LottoGameTest {
     @ValueSource(ints = [LottoConstants.MIN_NUMBER - 1, LottoConstants.MAX_NUMBER + 1])
     fun `throw exception when bonus number is in invalid range`(bonusNumber: Int) {
         assertThrows<IllegalArgumentException>("Bonus number must be between ${LottoConstants.MIN_NUMBER} and ${LottoConstants.MAX_NUMBER}.") {
-            LottoGame(validLottos, WinningNumbers(listOf(1, 2, 3, 4, 5, 6)), bonusNumber)
+            LottoGame(validLottos, WinningNumbers.ofNumbers(listOf(1, 2, 3, 4, 5, 6)), LottoNumber(bonusNumber))
         }
     }
 
@@ -42,17 +42,17 @@ class LottoGameTest {
         // given
         val lottos = Lottos(
             listOf(
-                Lotto(listOf(1, 2, 3, 4, 5, 6)), // 1st
-                Lotto(listOf(1, 2, 3, 4, 5, 6)), // 1st
-                Lotto(listOf(1, 2, 3, 4, 5, 45)), // 2nd
-                Lotto(listOf(1, 2, 3, 4, 5, 16)), // 3rd
-                Lotto(listOf(1, 2, 3, 14, 15, 16)), // 5th
-                Lotto(listOf(11, 12, 13, 14, 15, 16)), // no-prize
+                Lotto.ofNumbers(1, 2, 3, 4, 5, 6), // 1st
+                Lotto.ofNumbers(1, 2, 3, 4, 5, 6), // 1st
+                Lotto.ofNumbers(1, 2, 3, 4, 5, 45), // 2nd
+                Lotto.ofNumbers(1, 2, 3, 4, 5, 16), // 3rd
+                Lotto.ofNumbers(1, 2, 3, 14, 15, 16), // 5th
+                Lotto.ofNumbers(11, 12, 13, 14, 15, 16), // no-prize
             )
         )
 
-        val winningNumbers = WinningNumbers(listOf(1, 2, 3, 4, 5, 6))
-        val bonusNumber = 45
+        val winningNumbers = WinningNumbers.ofNumbers(listOf(1, 2, 3, 4, 5, 6))
+        val bonusNumber = LottoNumber(45)
         val lottoGame = LottoGame(lottos, winningNumbers, bonusNumber)
 
         // when

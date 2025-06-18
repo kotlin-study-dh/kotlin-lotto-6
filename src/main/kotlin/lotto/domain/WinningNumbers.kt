@@ -2,7 +2,7 @@ package lotto.domain
 
 import lotto.constant.LottoConstants
 
-class WinningNumbers(val numbers: List<Int>) {
+class WinningNumbers(val numbers: List<LottoNumber>) {
 
     init {
         require(numbers.size == LottoConstants.NUMBERS_AMOUNT) {
@@ -10,5 +10,13 @@ class WinningNumbers(val numbers: List<Int>) {
         }
     }
 
-    fun contains(number: Int) = numbers.contains(number)
+    companion object {
+        fun ofNumbers(numbers: List<Int>): WinningNumbers {
+            numbers.map { LottoNumber(it) }
+                .toList()
+                .also { return WinningNumbers(it) }
+        }
+    }
+
+    fun contains(number: LottoNumber) = numbers.contains(number)
 }

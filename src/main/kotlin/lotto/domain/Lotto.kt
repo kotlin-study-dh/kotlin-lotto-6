@@ -3,7 +3,7 @@ package lotto.domain
 import lotto.common.RandomNumbersGenerator
 import lotto.constant.LottoConstants
 
-class Lotto(private val numbers: List<Int>) {
+class Lotto(private val numbers: List<LottoNumber>) {
 
     init {
         require(numbers.size == LottoConstants.NUMBERS_AMOUNT) {
@@ -20,10 +20,17 @@ class Lotto(private val numbers: List<Int>) {
         )
     )
 
-    fun calculateRank(winningNumbers: WinningNumbers, bonusNumber: Int) = LottoRank.of(
+    companion object {
+        fun ofNumbers(vararg rawNumbers: Int): Lotto {
+            val numbers = rawNumbers.map { LottoNumber(it) }
+            return Lotto(numbers)
+        }
+    }
+
+    fun calculateRank(winningNumbers: WinningNumbers, bonusNumber: LottoNumber) = LottoRank.of(
         matchCount = numbers.count { it -> winningNumbers.contains(it) },
         matchesBonus = numbers.contains(bonusNumber)
     )
 
-    fun getNumbers() = numbers
+    fun getNumbers() = numbers.map { it.number }
 }
