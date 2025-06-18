@@ -1,5 +1,6 @@
 package lotto.domain
 
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -18,5 +19,13 @@ class LottoTest {
         }
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @Test
+    fun `returns matched count when given winning numbers`() { // todo: improve
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+        val winningNumbers = listOf(1, 2, 3, 4, 5, 6).map { LottoNumber(it) }
+
+        val matchedCount = lotto.match(winningNumbers)
+
+        assertThat(matchedCount).isEqualTo(6)
+    }
 }

@@ -2,7 +2,6 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 import lotto.domain.Lotto
-import lotto.domain.LottoNumber
 import lotto.view.InputView
 import lotto.view.OutputView
 
@@ -30,8 +29,7 @@ class LottoController(val input: InputView, val output: OutputView) {
         val bonusNumber = input.readBonusNumber()
 
         // 5. 로또, 당첨번호 비교
-
-
+        val matchResults = lottos.map { it.match(winningNumbers) }
 
         // 6. 당첨 내역 및 수익률 계산 / 출력
     }
