@@ -16,4 +16,6 @@ class Lotto(private val numbers: List<Int>) {
     constructor() : this(
         RandomNumbersGenerator.generate(START_NUMBER, END_NUMBER, NUMBERS_AMOUNT)
     )
+
+    fun getNumbers() = numbers
 }
