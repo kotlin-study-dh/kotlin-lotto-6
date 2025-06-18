@@ -4,7 +4,7 @@ class LottoPurchaseAmount(
     val amount: Int,
 ) {
     init {
-        require(amount > LOTTO_PRICE) { "Purchase amount must be greater than $LOTTO_PRICE." }
+        require(amount >= LOTTO_PRICE) { "Purchase amount must be equal to or greater than $LOTTO_PRICE." }
         require(amount % LOTTO_PRICE == 0) { "Purchase amount must be a multiple of $LOTTO_PRICE." }
     }
 
