@@ -1,8 +1,10 @@
 package lotto.domain
 
 class Lotto(numbers: List<Int>) {
+    private val _lottoNumbers: List<LottoNumber> = numbers.map { LottoNumber(it) }
+    val lottoNumbers: List<LottoNumber>
+        get() = _lottoNumbers.toList()
 
-    private val lottoNumbers: List<LottoNumber> = numbers.map { LottoNumber(it) }
 
     init {
         require(numbers.size == SIZE_OF_LOTTO_NUMBERS) { "The number of lotto numbers must be $SIZE_OF_LOTTO_NUMBERS." }
@@ -10,7 +12,7 @@ class Lotto(numbers: List<Int>) {
     }
 
     fun match(winningNumbers: List<LottoNumber>): Int {
-        return lottoNumbers.count { winningNumbers.contains(it) }
+        return _lottoNumbers.count { winningNumbers.contains(it) }
     }
 
     companion object {
