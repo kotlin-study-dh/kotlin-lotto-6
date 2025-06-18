@@ -1,4 +1,4 @@
-package lotto.domain
+package lotto.domain.number
 
 open class Number(val number: Int) {
 
