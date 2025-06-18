@@ -9,14 +9,14 @@ private const val POSTFIX = "]"
 
 object OutputView {
     fun printLottos(lottos: List<Lotto>) {
-        println(System.lineSeparator() + "You purchased ${lottos.size} lottos.")
+        println("You purchased ${lottos.size} lottos.")
         lottos.forEach {
             println(it.getSortedNumbers().joinToString(DEFAULT_SEPARATOR, PREFIX, POSTFIX))
         }
     }
 
     fun printWinningStatistics(prizeCounts: Map<Prize, Int>) {
-        println(System.lineSeparator() + "Winning statistics")
+        println("Winning statistics")
         println("---")
         prizeCounts.forEach { (prize, count) ->
             println("${prize.matchCount} matches (${prize.winningAmount}won) - $count win)")
@@ -24,6 +24,6 @@ object OutputView {
     }
 
     fun printRateOfReturn(rateOfReturn: Double) {
-        println(System.lineSeparator() + "Total profit rate is ${rateOfReturn}%")
+        println("Total profit rate is ${rateOfReturn}%")
     }
 }
