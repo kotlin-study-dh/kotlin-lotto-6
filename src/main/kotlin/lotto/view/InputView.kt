@@ -2,9 +2,14 @@ package lotto.view
 
 object InputView {
 
-    fun readPriceToBuy(): String {
+    fun readPriceToBuy(): Int {
         println("Please enter the purchase amount.")
-        return readln()
+
+        try {
+            return readln().toInt()
+        } catch (_: NumberFormatException) {
+            throw IllegalArgumentException("Only integer numbers allowed.")
+        }
     }
 
     fun readWinningNumbers(): List<Int> {

@@ -6,7 +6,7 @@ import lotto.view.InputView
 import lotto.view.OutputView
 
 fun main() {
-    val price = InputView.readPriceToBuy().toInt() // TODO: add validations
+    val price = InputView.readPriceToBuy()
     val lottos = Lottos(price / 1000) // TODO: remove magic number
     OutputView.printLottoNumbers(lottos)
 
