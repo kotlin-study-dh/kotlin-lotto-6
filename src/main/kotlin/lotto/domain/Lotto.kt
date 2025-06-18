@@ -1,9 +1,18 @@
 package lotto.domain
 
+import lotto.common.RandomNumbersGenerator
+
+private const val START_NUMBER = 1
+private const val END_NUMBER = 45
+private const val NUMBERS_AMOUNT = 6
+
 class Lotto(private val numbers: List<Int>) {
+
     init {
-        require(numbers.size == 6)
+        require(numbers.size == NUMBERS_AMOUNT) { "Lotto must contain $NUMBERS_AMOUNT numbers." }
     }
 
-    // TODO: 추가 기능 구현
+    constructor() : this(
+        RandomNumbersGenerator.generate(START_NUMBER, END_NUMBER, NUMBERS_AMOUNT)
+    )
 }
