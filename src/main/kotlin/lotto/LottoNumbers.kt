@@ -1,5 +1,6 @@
 package lotto
 
+//TODO Either로 바꿔서 처리해보기
 class LottoNumbers(private val numbers: List<Int>) {
     init {
         require(numbers.size == 6) {
