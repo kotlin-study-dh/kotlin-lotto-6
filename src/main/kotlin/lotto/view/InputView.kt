@@ -15,7 +15,7 @@ object InputView {
                 .map { it -> it.trim() }
                 .map { it -> it.toInt() }
                 .toList()
-        } catch (e: NumberFormatException) {
+        } catch (_: NumberFormatException) {
             throw IllegalArgumentException("Only integer numbers allowed.")
         }
     }
@@ -25,7 +25,7 @@ object InputView {
 
         try {
             return readln().toInt()
-        } catch (e: NumberFormatException) {
+        } catch (_: NumberFormatException) {
             throw IllegalArgumentException("Only integer number allowed.")
         }
     }
