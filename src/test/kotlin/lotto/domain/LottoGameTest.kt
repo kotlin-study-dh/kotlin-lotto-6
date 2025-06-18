@@ -19,6 +19,17 @@ class LottoGameTest {
     }
 
     @Test
+    fun `throw error when bonus number and winning number duplication`() {
+        assertThrows<IllegalArgumentException>("There must be no duplication between winning numbers and bonus number") {
+            LottoGame(
+                validLottos,
+                WinningNumbers.ofNumbers(listOf(1, 2, 3, 4, 5, 6)),
+                LottoNumber(1)
+            )
+        }
+    }
+
+    @Test
     fun `throw exception when winning number has invalid size`() {
         assertThrows<IllegalArgumentException>("There must be ${LottoConstants.NUMBERS_AMOUNT} winning numbers.") {
             LottoGame(validLottos, WinningNumbers.ofNumbers(listOf(1, 2, 3, 4, 5)), LottoNumber(45))
