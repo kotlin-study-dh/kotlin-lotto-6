@@ -18,6 +18,11 @@ class LottoController(val input: InputView, val output: OutputView) {
         val lottoCount = purchaseAmount / PURCHASE_AMOUNT_UNIT
 
         // 3. 로또 발행 후 보관 -> 갯수만큼 반복
+        val lottos = mutableListOf<Lotto>()
+        repeat(lottoCount) {
+            val numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+            lottos.add(Lotto(numbers))
+        }
 
         // 4. 당첨번호, 보너스 번호 입력받기
 
