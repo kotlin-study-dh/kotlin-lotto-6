@@ -54,5 +54,5 @@ Break down the implementation into three parts: input logic, output logic, and d
         - [x] Determine the Lotto grade.
     - [x] Lotto Game
     - [] Lotto Exchange
-        - [ ] Throw an exception when the purchase amount is not divisible by 1,000
-        - [ ] calculate the total revenue percentage.
+        - [x] Throw an exception when the purchase amount is not divisible by 1,000
+        - [] calculate the total revenue percentage.

@@ -4,7 +4,7 @@ import lotto.domain.number.BonusNumber
 import lotto.domain.number.RandomNumberGenerator
 import lotto.domain.number.WinningNumbers
 
-class LottoGame(private val winningNumbers: WinningNumbers, private val bonusNumbers: BonusNumber) {
+class LottoPlayer(private val winningNumbers: WinningNumbers, private val bonusNumbers: BonusNumber) {
 
     fun play(count: Int): List<Score> {
         val issuer = LottoIssuer(RandomNumberGenerator())
