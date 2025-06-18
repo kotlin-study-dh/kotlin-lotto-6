@@ -1,0 +1,39 @@
+package lotto.view
+
+import lotto.domain.Lotto
+import lotto.domain.Prize
+import java.text.DecimalFormat
+
+class OutputView {
+
+    fun printGeneratedLottos(lottos: List<Lotto>) {
+        println("${lottos.size}개를 구매했습니다.")
+        lottos.forEach { it ->
+            val sorted = it.lottoNumbers.map { it.number }.sorted()
+            println("[${sorted.joinToString(", ")}]")
+        }
+    }
+
+    fun printWinningStatistics(prizes: List<Prize>) {
+        val prizeToCount = Prize.entries.sortedBy { it.matchedCount }
+            .associateWith { prize -> prizes.count { it == prize } }
+        println("당첨 통계")
+        println("---")
+
+        prizeToCount.forEach { prize, count ->
+            println(
+                "${prize.matchedCount}개 일치${if (prize.shouldBonusMatch)", 보너스 볼 일치" else ""} (${
+                    String.format(
+                        "%,d",
+                        prize.reward
+                    )
+                }원) - ${count}개"
+            )
+        }
+    }
+
+    fun printRevenue(revenue: Double) {
+        val formattedRevenue = DecimalFormat("#,###.#").format(revenue)
+        println("총 수익률은 ${formattedRevenue}%입니다.")
+    }
+}
