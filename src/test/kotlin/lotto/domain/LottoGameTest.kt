@@ -2,7 +2,7 @@ package lotto.domain
 
 import org.junit.jupiter.api.Test
 
-class LottosTest {
+class LottoGameTest {
 
     @Test
     fun `get the overall result for all the lottos`() {
@@ -18,8 +18,12 @@ class LottosTest {
             )
         )
 
+        val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
+        val bonusNumber = 45
+        val lottoGame = LottoGame(lottos, winningNumbers, bonusNumber)
+
         // when
-        val result = lottos.result(listOf(1, 2, 3, 4, 5, 6), 45)
+        val result = lottoGame.result()
 
         // then
         assert(

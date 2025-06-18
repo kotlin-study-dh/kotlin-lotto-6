@@ -8,11 +8,5 @@ class Lottos(private val elements: List<Lotto>) {
 
     fun size() = elements.size
 
-    fun result(winningNumbers: List<Int>, bonusNumber: Int): Map<LottoRank, Int> {
-        return elements.map { it.calculateRank(winningNumbers, bonusNumber) }
-            .groupingBy { it }
-            .eachCount()
-    }
-
     fun getElements() = elements
 }
