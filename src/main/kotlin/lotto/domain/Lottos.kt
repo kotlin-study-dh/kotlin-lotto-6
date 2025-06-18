@@ -1,6 +1,6 @@
 package lotto.domain
 
-private const val LOTTO_PRICE = 1000
+import lotto.constant.LottoConstants
 
 class Lottos(private val elements: List<Lotto>) {
 
@@ -10,10 +10,14 @@ class Lottos(private val elements: List<Lotto>) {
 
     companion object {
         fun buy(price: Long): Lottos {
-            require(price >= LOTTO_PRICE) { "Purchasing price must be $LOTTO_PRICE or greater." }
-            require(price % LOTTO_PRICE == 0L) { "Purchasing price must be divisible by $LOTTO_PRICE." }
+            require(price >= LottoConstants.LOTTO_PRICE) {
+                "Purchasing price must be ${LottoConstants.LOTTO_PRICE} or greater."
+            }
+            require(price % LottoConstants.LOTTO_PRICE == 0L) {
+                "Purchasing price must be divisible by ${LottoConstants.LOTTO_PRICE}."
+            }
 
-            val buyAmount = (price / LOTTO_PRICE).toInt()
+            val buyAmount = (price / LottoConstants.LOTTO_PRICE).toInt()
             return Lottos(List(buyAmount) { Lotto() })
         }
     }
