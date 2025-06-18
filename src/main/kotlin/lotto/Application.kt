@@ -7,7 +7,7 @@ import lotto.view.OutputView
 
 fun main() {
     val price = InputView.readPriceToBuy()
-    val lottos = Lottos(price / 1000) // TODO: remove magic number
+    val lottos = Lottos.buy(price)
     OutputView.printLottoNumbers(lottos)
 
     val winningNumbers = InputView.readWinningNumbers()

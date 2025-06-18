@@ -2,11 +2,11 @@ package lotto.view
 
 object InputView {
 
-    fun readPriceToBuy(): Int {
+    fun readPriceToBuy(): Long {
         println("Please enter the purchase amount.")
 
         try {
-            return readln().toInt()
+            return readln().toLong()
         } catch (_: NumberFormatException) {
             throw IllegalArgumentException("Only integer numbers allowed.")
         }
