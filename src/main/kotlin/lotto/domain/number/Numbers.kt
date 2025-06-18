@@ -1,17 +1,17 @@
 package lotto.domain.number
 
-class WinningNumbers private constructor(val winningNumbers: List<Number>) {
+class Numbers private constructor(val winningNumbers: List<Number>) {
 
     companion object {
         const val WINNING_NUMBER_COUNT = 6
 
-        fun fromInts(vararg numbers: Int): WinningNumbers {
+        fun fromInts(vararg numbers: Int): Numbers {
             if (numbers.distinct().size != WINNING_NUMBER_COUNT) {
                 "Winning numbers must be $WINNING_NUMBER_COUNT unique values"
             }
 
             val numberList = numbers.map { Number(it) }
-            return WinningNumbers(numberList)
+            return Numbers(numberList)
         }
     }
 
@@ -24,7 +24,7 @@ class WinningNumbers private constructor(val winningNumbers: List<Number>) {
         }
     }
 
-    fun match(otherNumbers: WinningNumbers): Int {
+    fun match(otherNumbers: Numbers): Int {
         return winningNumbers.count { it in otherNumbers.winningNumbers }
     }
 

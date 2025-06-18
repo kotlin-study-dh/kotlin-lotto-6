@@ -1,7 +1,7 @@
 package lotto.domain
 
 import lotto.domain.number.NumberGenerator
-import lotto.domain.number.WinningNumbers
+import lotto.domain.number.Numbers
 
 class LottoIssuer(private val numberGenerator: NumberGenerator) {
 
@@ -9,7 +9,7 @@ class LottoIssuer(private val numberGenerator: NumberGenerator) {
         const val LOTTO_SIZE = 6
     }
 
-    fun issue(): WinningNumbers {
-        return WinningNumbers.fromInts(*numberGenerator.generate(LOTTO_SIZE))
+    fun issue(): Numbers {
+        return Numbers.fromInts(*numberGenerator.generate(LOTTO_SIZE))
     }
 }

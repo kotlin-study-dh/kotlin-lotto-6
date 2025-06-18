@@ -1,7 +1,7 @@
 package lotto.domain
 
 import lotto.domain.number.BonusNumber
-import lotto.domain.number.WinningNumbers
+import lotto.domain.number.Numbers
 import org.assertj.core.api.Assertions
 import kotlin.test.Test
 
@@ -10,10 +10,10 @@ class LottoInspectorTest {
     @Test
     fun `determine the Lotto grade first case`() {
         // given
-        val winningNumbers = WinningNumbers.fromInts(1, 2, 3, 4, 5, 6)
-        val guessingNumbers = WinningNumbers.fromInts(1, 2, 3, 4, 5, 6)
+        val numbers = Numbers.fromInts(1, 2, 3, 4, 5, 6)
+        val guessingNumbers = Numbers.fromInts(1, 2, 3, 4, 5, 6)
         val bonusNumber = BonusNumber(7)
-        val inspector = LottoInspector(winningNumbers, bonusNumber)
+        val inspector = LottoInspector(numbers, bonusNumber)
 
         // when
         val score = inspector.inspect(guessingNumbers)
@@ -25,10 +25,10 @@ class LottoInspectorTest {
     @Test
     fun `determine the Lotto grade second case`() {
         // given
-        val winningNumbers = WinningNumbers.fromInts(1, 2, 3, 4, 5, 7)
-        val guessingNumbers = WinningNumbers.fromInts(1, 2, 3, 4, 5, 6)
+        val numbers = Numbers.fromInts(1, 2, 3, 4, 5, 7)
+        val guessingNumbers = Numbers.fromInts(1, 2, 3, 4, 5, 6)
         val bonusNumber = BonusNumber(6)
-        val inspector = LottoInspector(winningNumbers, bonusNumber)
+        val inspector = LottoInspector(numbers, bonusNumber)
 
         // when
         val score = inspector.inspect(guessingNumbers)
@@ -40,10 +40,10 @@ class LottoInspectorTest {
     @Test
     fun `determine the Lotto grade third case`() {
         // given
-        val winningNumbers = WinningNumbers.fromInts(1, 2, 3, 4, 5, 6)
-        val guessingNumbers = WinningNumbers.fromInts(1, 2, 3, 4, 5, 8)
+        val numbers = Numbers.fromInts(1, 2, 3, 4, 5, 6)
+        val guessingNumbers = Numbers.fromInts(1, 2, 3, 4, 5, 8)
         val bonusNumber = BonusNumber(9)
-        val inspector = LottoInspector(winningNumbers, bonusNumber)
+        val inspector = LottoInspector(numbers, bonusNumber)
 
         // when
         val score = inspector.inspect(guessingNumbers)
@@ -55,10 +55,10 @@ class LottoInspectorTest {
     @Test
     fun `determine the Lotto grade fourth case`() {
         // given
-        val winningNumbers = WinningNumbers.fromInts(1, 2, 3, 4, 5, 6)
-        val guessingNumbers = WinningNumbers.fromInts(1, 2, 3, 5, 8, 9)
+        val numbers = Numbers.fromInts(1, 2, 3, 4, 5, 6)
+        val guessingNumbers = Numbers.fromInts(1, 2, 3, 5, 8, 9)
         val bonusNumber = BonusNumber(10)
-        val inspector = LottoInspector(winningNumbers, bonusNumber)
+        val inspector = LottoInspector(numbers, bonusNumber)
 
         // when
         val score = inspector.inspect(guessingNumbers)
@@ -70,10 +70,10 @@ class LottoInspectorTest {
     @Test
     fun `determine the Lotto grade fifth case`() {
         // given
-        val winningNumbers = WinningNumbers.fromInts(1, 2, 3, 4, 5, 6)
-        val guessingNumbers = WinningNumbers.fromInts(1, 2, 3, 7, 8, 9)
+        val numbers = Numbers.fromInts(1, 2, 3, 4, 5, 6)
+        val guessingNumbers = Numbers.fromInts(1, 2, 3, 7, 8, 9)
         val bonusNumber = BonusNumber(10)
-        val inspector = LottoInspector(winningNumbers, bonusNumber)
+        val inspector = LottoInspector(numbers, bonusNumber)
 
         // when
         val score = inspector.inspect(guessingNumbers)
