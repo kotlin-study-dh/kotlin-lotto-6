@@ -50,8 +50,8 @@ Break down the implementation into three parts: input logic, output logic, and d
     - [x] Bonus Number
     - [x] Lotto Issuer
         - [x] Generate several Lotto Numbers
-    - [ ] Lotto Inspector
-        - [ ] Determine the Lotto grade.
+    - [x] Lotto Inspector
+        - [x] Determine the Lotto grade.
     - [ ] Lotto Game
         - [ ] Throw an exception when the purchase amount is not divisible by 1,000
         - [ ] calculate the total revenue percentage.
