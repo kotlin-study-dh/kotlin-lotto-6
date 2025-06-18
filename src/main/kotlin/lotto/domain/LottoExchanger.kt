@@ -1,5 +1,8 @@
 package lotto.domain
 
+import lotto.domain.number.Numbers
+import lotto.domain.number.RandomNumberGenerator
+
 class LottoExchanger(val purchaseAmount: Int) {
 
     init {
@@ -12,8 +15,12 @@ class LottoExchanger(val purchaseAmount: Int) {
         const val PURCHASE_AMOUNT_PER_CASE = 1_000
     }
 
-    fun purchase(): Int {
-        return purchaseAmount / PURCHASE_AMOUNT_PER_CASE
+    fun purchase(): List<Numbers> {
+        val ticketSize = purchaseAmount / PURCHASE_AMOUNT_PER_CASE
+        return List(ticketSize) {
+            val issuer = LottoIssuer(RandomNumberGenerator())
+            issuer.issue()
+        }
     }
 
     fun yieldRate(scores: List<Score>): Int {

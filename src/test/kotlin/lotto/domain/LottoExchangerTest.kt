@@ -19,7 +19,7 @@ class LottoExchangerTest {
         val exchanger = LottoExchanger(2000)
 
         // when & then
-        assertEquals(exchanger.purchase(), 2)
+        assertEquals(exchanger.purchase().size, 2)
     }
 
     @Test
