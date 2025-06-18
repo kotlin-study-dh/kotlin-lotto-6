@@ -1,10 +1,9 @@
 package lotto
 
 import lotto.domain.Lotto
-import lotto.domain.LottoResult
+import lotto.domain.LottoRank
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-
 
 class LottoTest {
     @Test
@@ -23,26 +22,75 @@ class LottoTest {
     }
 
     @Test
-    fun `calculate result - 5 number matches, bonus match FALSE`() {
+    fun `calculate rank - FIRST`() {
         // given
         val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
 
         // when
-        val result = lotto.calculateResult(listOf(1, 2, 3, 4, 5, 7), 45)
+        val result = lotto.calculateRank(listOf(1, 2, 3, 4, 5, 6), 10)
 
         // then
-        assert(result == LottoResult(matchCount = 5, matchesBonus = false))
+        assert(result == LottoRank.FIRST)
     }
 
     @Test
-    fun `calculate result - 0 number matches, bonus match TRUE`() {
+    fun `calculate rank - SECOND`() {
         // given
         val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
 
         // when
-        val result = lotto.calculateResult(listOf(11, 12, 13, 14, 15, 16), 1)
+        val result = lotto.calculateRank(listOf(1, 2, 3, 4, 5, 10), 6)
 
         // then
-        assert(result == LottoResult(matchCount = 0, matchesBonus = true))
+        assert(result == LottoRank.SECOND)
     }
+
+    @Test
+    fun `calculate rank - THIRD`() {
+        // given
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+
+        // when
+        val result = lotto.calculateRank(listOf(1, 2, 3, 4, 5, 10), 20)
+
+        // then
+        assert(result == LottoRank.THIRD)
+    }
+
+    @Test
+    fun `calculate rank - FOURTH`() {
+        // given
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+
+        // when
+        val result = lotto.calculateRank(listOf(1, 2, 3, 4, 15, 16), 20)
+
+        // then
+        assert(result == LottoRank.FOURTH)
+    }
+
+    @Test
+    fun `calculate rank - FIFTH`() {
+        // given
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+
+        // when
+        val result = lotto.calculateRank(listOf(1, 2, 3, 14, 15, 16), 20)
+
+        // then
+        assert(result == LottoRank.FIFTH)
+    }
+
+    @Test
+    fun `calculate rank - NO_PRIZE`() {
+        // given
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+
+        // when
+        val result = lotto.calculateRank(listOf(1, 2, 13, 14, 15, 16), 20)
+
+        // then
+        assert(result == LottoRank.NO_PRIZE)
+    }
+
 }

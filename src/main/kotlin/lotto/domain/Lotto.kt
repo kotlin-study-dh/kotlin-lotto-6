@@ -17,7 +17,7 @@ class Lotto(private val numbers: List<Int>) {
         RandomNumbersGenerator.generate(START_NUMBER, END_NUMBER, NUMBERS_AMOUNT)
     )
 
-    fun calculateResult(winningNumbers: List<Int>, bonusNumber: Int) = LottoResult(
+    fun calculateRank(winningNumbers: List<Int>, bonusNumber: Int) = LottoRank.of(
         matchCount = numbers.count { it -> winningNumbers.contains(it) },
         matchesBonus = numbers.contains(bonusNumber)
     )
