@@ -1,6 +1,6 @@
 ## Requirement
-- range of lotto number : 1~45
-- one lotto has the unique 6 numbers
+- [x] range of lotto number : 1~45
+- [x] one lotto has the unique 6 numbers
 - winning numbers pick 6 numbers and 1 bonus number which are unique
 - winning has 1st ~ 5th
     - 1st: 6 number match / 2,000,000,000won
