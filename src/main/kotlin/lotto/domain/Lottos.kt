@@ -4,6 +4,10 @@ private const val LOTTO_PRICE = 1000
 
 class Lottos(private val elements: List<Lotto>) {
 
+    init {
+        assert(elements.isNotEmpty()) { "At least one lotto has to be bought." }
+    }
+
     companion object {
         fun buy(price: Long): Lottos {
             assert(price >= LOTTO_PRICE) { "Purchasing price must be $LOTTO_PRICE or greater." }
