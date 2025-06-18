@@ -10,6 +10,7 @@ class Lotto(private val numbers: List<Int>) {
 
     init {
         require(numbers.size == NUMBERS_AMOUNT) { "Lotto must contain $NUMBERS_AMOUNT numbers." }
+        require(numbers.size == numbers.distinct().size) { "There must not be duplication in lotto numbers." }
     }
 
     constructor() : this(
