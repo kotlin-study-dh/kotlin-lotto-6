@@ -11,8 +11,10 @@ object OutputView {
     fun printLottos(lottos: List<Lotto>) {
         println("You purchased ${lottos.size} lottos.")
         lottos.forEach {
-            println(it.getSortedNumbers().joinToString(DEFAULT_SEPARATOR, PREFIX, POSTFIX))
+            println(it.getSortedNumbers().map { lottoNumber -> lottoNumber.number }
+                .joinToString(separator = DEFAULT_SEPARATOR, prefix = PREFIX, postfix = POSTFIX))
         }
+        println()
     }
 
     fun printWinningStatistics(prizeCounts: Map<Prize, Int>) {
