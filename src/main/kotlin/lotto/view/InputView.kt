@@ -20,8 +20,13 @@ object InputView {
         }
     }
 
-    fun readBonusNumber(): String {
+    fun readBonusNumber(): Int {
         println("Please enter the bonus number.")
-        return readln()
+
+        try {
+            return readln().toInt()
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException("Only integer number allowed.")
+        }
     }
 }
