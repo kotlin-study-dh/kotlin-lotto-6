@@ -2,7 +2,7 @@ package lotto.domain
 
 import lotto.constant.LottoConstants
 
-class WinningNumbers(val numbers: List<LottoNumber>) {
+class WinningNumbers(private val numbers: List<LottoNumber>) {
 
     init {
         require(numbers.size == LottoConstants.NUMBERS_AMOUNT) {
