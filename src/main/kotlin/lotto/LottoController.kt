@@ -2,6 +2,7 @@ package lotto
 
 import camp.nextstep.edu.missionutils.Randoms
 import lotto.domain.Lotto
+import lotto.domain.LottoNumber
 import lotto.view.InputView
 import lotto.view.OutputView
 
@@ -25,9 +26,17 @@ class LottoController(val input: InputView, val output: OutputView) {
         }
 
         // 4. 당첨번호, 보너스 번호 입력받기
+        val winningNumbers = input.readWinningNumbers()
+        val bonusNumber = input.readBonusNumber()
 
         // 5. 로또, 당첨번호 비교
 
+
+
         // 6. 당첨 내역 및 수익률 계산 / 출력
+    }
+
+    companion object {
+        const val PURCHASE_AMOUNT_UNIT = 1_000
     }
 }
