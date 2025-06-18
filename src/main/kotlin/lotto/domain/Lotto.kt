@@ -17,5 +17,10 @@ class Lotto(private val numbers: List<Int>) {
         RandomNumbersGenerator.generate(START_NUMBER, END_NUMBER, NUMBERS_AMOUNT)
     )
 
+    fun calculateResult(winningNumbers: List<Int>, bonusNumber: Int) = LottoResult(
+        matchCount = numbers.count { it -> winningNumbers.contains(it) },
+        matchesBonus = numbers.contains(bonusNumber)
+    )
+
     fun getNumbers() = numbers
 }

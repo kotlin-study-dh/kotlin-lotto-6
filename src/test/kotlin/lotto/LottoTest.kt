@@ -1,6 +1,7 @@
 package lotto
 
 import lotto.domain.Lotto
+import lotto.domain.LottoResult
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -21,5 +22,27 @@ class LottoTest {
         }
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @Test
+    fun `calculate result - 5 number matches, bonus match FALSE`() {
+        // given
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+
+        // when
+        val result = lotto.calculateResult(listOf(1, 2, 3, 4, 5, 7), 45)
+
+        // then
+        assert(result == LottoResult(matchCount = 5, matchesBonus = false))
+    }
+
+    @Test
+    fun `calculate result - 0 number matches, bonus match TRUE`() {
+        // given
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+
+        // when
+        val result = lotto.calculateResult(listOf(11, 12, 13, 14, 15, 16), 1)
+
+        // then
+        assert(result == LottoResult(matchCount = 0, matchesBonus = true))
+    }
 }
