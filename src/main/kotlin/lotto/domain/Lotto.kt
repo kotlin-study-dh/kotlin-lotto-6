@@ -20,7 +20,7 @@ class Lotto(private val numbers: List<Int>) {
         )
     )
 
-    fun calculateRank(winningNumbers: List<Int>, bonusNumber: Int) = LottoRank.of(
+    fun calculateRank(winningNumbers: WinningNumbers, bonusNumber: Int) = LottoRank.of(
         matchCount = numbers.count { it -> winningNumbers.contains(it) },
         matchesBonus = numbers.contains(bonusNumber)
     )

@@ -21,11 +21,11 @@ class LottoGameTest {
     @Test
     fun `throw exception when winning number has invalid size`() {
         assertThrows<IllegalArgumentException>("There must be ${LottoConstants.NUMBERS_AMOUNT} winning numbers.") {
-            LottoGame(validLottos, listOf(1, 2, 3, 4, 5), 45)
+            LottoGame(validLottos, WinningNumbers(listOf(1, 2, 3, 4, 5)), 45)
         }
 
         assertThrows<IllegalArgumentException>("There must be ${LottoConstants.NUMBERS_AMOUNT} winning numbers.") {
-            LottoGame(validLottos, listOf(1, 2, 3, 4, 5, 6, 7), 45)
+            LottoGame(validLottos, WinningNumbers(listOf(1, 2, 3, 4, 5, 6, 7)), 45)
         }
     }
 
@@ -33,7 +33,7 @@ class LottoGameTest {
     @ValueSource(ints = [LottoConstants.MIN_NUMBER - 1, LottoConstants.MAX_NUMBER + 1])
     fun `throw exception when bonus number is in invalid range`(bonusNumber: Int) {
         assertThrows<IllegalArgumentException>("Bonus number must be between ${LottoConstants.MIN_NUMBER} and ${LottoConstants.MAX_NUMBER}.") {
-            LottoGame(validLottos, listOf(1, 2, 3, 4, 5, 6), bonusNumber)
+            LottoGame(validLottos, WinningNumbers(listOf(1, 2, 3, 4, 5, 6)), bonusNumber)
         }
     }
 
@@ -51,7 +51,7 @@ class LottoGameTest {
             )
         )
 
-        val winningNumbers = listOf(1, 2, 3, 4, 5, 6)
+        val winningNumbers = WinningNumbers(listOf(1, 2, 3, 4, 5, 6))
         val bonusNumber = 45
         val lottoGame = LottoGame(lottos, winningNumbers, bonusNumber)
 

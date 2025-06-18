@@ -2,6 +2,7 @@ package lotto
 
 import lotto.domain.Lotto
 import lotto.domain.LottoRank
+import lotto.domain.WinningNumbers
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -27,7 +28,7 @@ class LottoTest {
         val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
 
         // when
-        val result = lotto.calculateRank(listOf(1, 2, 3, 4, 5, 6), 10)
+        val result = lotto.calculateRank(WinningNumbers(listOf(1, 2, 3, 4, 5, 6)), 10)
 
         // then
         assert(result == LottoRank.FIRST)
@@ -39,7 +40,7 @@ class LottoTest {
         val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
 
         // when
-        val result = lotto.calculateRank(listOf(1, 2, 3, 4, 5, 10), 6)
+        val result = lotto.calculateRank(WinningNumbers(listOf(1, 2, 3, 4, 5, 10)), 6)
 
         // then
         assert(result == LottoRank.SECOND)
@@ -51,7 +52,7 @@ class LottoTest {
         val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
 
         // when
-        val result = lotto.calculateRank(listOf(1, 2, 3, 4, 5, 10), 20)
+        val result = lotto.calculateRank(WinningNumbers(listOf(1, 2, 3, 4, 5, 10)), 20)
 
         // then
         assert(result == LottoRank.THIRD)
@@ -63,7 +64,7 @@ class LottoTest {
         val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
 
         // when
-        val result = lotto.calculateRank(listOf(1, 2, 3, 4, 15, 16), 20)
+        val result = lotto.calculateRank(WinningNumbers(listOf(1, 2, 3, 4, 15, 16)), 20)
 
         // then
         assert(result == LottoRank.FOURTH)
@@ -75,7 +76,7 @@ class LottoTest {
         val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
 
         // when
-        val result = lotto.calculateRank(listOf(1, 2, 3, 14, 15, 16), 20)
+        val result = lotto.calculateRank(WinningNumbers(listOf(1, 2, 3, 14, 15, 16)), 20)
 
         // then
         assert(result == LottoRank.FIFTH)
@@ -87,7 +88,7 @@ class LottoTest {
         val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
 
         // when
-        val result = lotto.calculateRank(listOf(1, 2, 13, 14, 15, 16), 20)
+        val result = lotto.calculateRank(WinningNumbers(listOf(1, 2, 13, 14, 15, 16)), 20)
 
         // then
         assert(result == LottoRank.NO_PRIZE)
