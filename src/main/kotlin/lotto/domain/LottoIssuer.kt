@@ -3,7 +3,7 @@ package lotto.domain
 import lotto.domain.number.NumberGenerator
 import lotto.domain.number.WinningNumbers
 
-class LottoIssuer(val numberGenerator: NumberGenerator) {
+class LottoIssuer(private val numberGenerator: NumberGenerator) {
 
     companion object {
         const val LOTTO_SIZE = 6
