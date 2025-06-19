@@ -15,6 +15,10 @@ data class Lotto(val numbers: List<Int>) {
         }
     }
 
+    companion object {
+        const val LOTTO_PRICE = 1_000
+    }
+
     fun isContain(number: Int): Boolean {
         return numbers.contains(number)
     }

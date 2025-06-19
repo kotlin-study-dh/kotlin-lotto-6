@@ -1,5 +1,8 @@
 package lotto
 
+import java.math.BigDecimal
+import java.math.RoundingMode
+
 data class WinningResult(
     private val resultsByRank: Map<LottoRank, Int>
 ) {
@@ -30,6 +33,18 @@ data class WinningResult(
             }
             return winningResult
         }
+    }
+
+    fun calculateProfitRate(purchaseAmount: Int): BigDecimal {
+        val profit = calculateProfit().toBigDecimal()
+        val purchaseAmount = (Lotto.LOTTO_PRICE * purchaseAmount).toBigDecimal()
+
+        return (BigDecimal(100).multiply(profit)
+            .divide(purchaseAmount, 1, RoundingMode.HALF_UP))
+    }
+
+    private fun calculateProfit(): Int = resultsByRank.entries.sumOf { (rank, count) ->
+        rank.prizeAmount * count
     }
 
     fun getByRank(lottoRank: LottoRank) = resultsByRank[lottoRank]
