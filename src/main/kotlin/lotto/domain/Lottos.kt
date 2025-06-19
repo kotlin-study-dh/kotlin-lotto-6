@@ -17,11 +17,11 @@ class Lottos(items: List<Lotto>) {
 
     companion object {
         fun from(lottoCount: Int): Lottos {
-            val lottos = (1..lottoCount).map { generateLotto() }
+            val lottos = (1..lottoCount).map { generateRandomLotto() }
             return Lottos(lottos)
         }
 
-        private fun generateLotto(): Lotto {
+        private fun generateRandomLotto(): Lotto {
             val numbers = Randoms.pickUniqueNumbersInRange(
                 LottoNumber.MIN_VALUE,
                 LottoNumber.MAX_VALUE,
