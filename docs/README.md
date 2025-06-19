@@ -29,17 +29,17 @@
 Break down the implementation into three parts: input logic, output logic, and domain logic.
 
 - Input
-    - [ ] purchase amount
-    - [ ] guess winning number
-        - [ ] separated by commas.
-    - [ ] bonus number
+    - [x] purchase amount
+    - [x] guess winning number
+        - [x] separated by commas.
+    - [x] bonus number
 
 - Output
-    - [ ] purchased lottery
-        - [ ] Display the lotteries in order.
-    - [ ] winning detail
-    - [ ] total revenue
-        - [ ] The revenue rate should be rounded to one decimal place.
+    - [x] purchased lottery
+        - [x] Display the lotteries in order.
+    - [x] winning detail
+    - [x] total revenue
+        - [x] The revenue rate should be rounded to one decimal place.
 
 - Domain (Write the domain logic checklist by component or class)
     - [x] Number

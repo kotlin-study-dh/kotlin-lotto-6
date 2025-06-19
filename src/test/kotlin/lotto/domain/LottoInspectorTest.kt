@@ -16,7 +16,7 @@ class LottoInspectorTest {
         val inspector = LottoInspector(numbers, bonusNumber)
 
         // when
-        val score = inspector.inspect(guessingNumbers)
+        val score = inspector.inspect(listOf(guessingNumbers))[0]
 
         // then
         Assertions.assertThat(score).isSameAs(Score.FIRST)
@@ -31,7 +31,7 @@ class LottoInspectorTest {
         val inspector = LottoInspector(numbers, bonusNumber)
 
         // when
-        val score = inspector.inspect(guessingNumbers)
+        val score = inspector.inspect(listOf(guessingNumbers))[0]
 
         // then
         Assertions.assertThat(score).isSameAs(Score.SECOND)
@@ -46,7 +46,7 @@ class LottoInspectorTest {
         val inspector = LottoInspector(numbers, bonusNumber)
 
         // when
-        val score = inspector.inspect(guessingNumbers)
+        val score = inspector.inspect(listOf(guessingNumbers))[0]
 
         // then
         Assertions.assertThat(score).isSameAs(Score.THIRD)
@@ -61,7 +61,7 @@ class LottoInspectorTest {
         val inspector = LottoInspector(numbers, bonusNumber)
 
         // when
-        val score = inspector.inspect(guessingNumbers)
+        val score = inspector.inspect(listOf(guessingNumbers))[0]
 
         // then
         Assertions.assertThat(score).isSameAs(Score.FOURTH)
@@ -76,7 +76,7 @@ class LottoInspectorTest {
         val inspector = LottoInspector(numbers, bonusNumber)
 
         // when
-        val score = inspector.inspect(guessingNumbers)
+        val score = inspector.inspect(listOf(guessingNumbers))[0]
 
         // then
         Assertions.assertThat(score).isSameAs(Score.FIFTH)
