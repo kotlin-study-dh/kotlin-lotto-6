@@ -16,10 +16,10 @@
   - retry user input
 
 ## Input
-- purchase cose
+- [x] purchase cose
   - unit : 1000 won
   - exception for not divided 1000won
-- numbers
+- [x] numbers
   - range 1 ~ 45
   - winning numbers
     - seperate number by comma

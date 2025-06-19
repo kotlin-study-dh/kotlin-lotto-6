@@ -4,7 +4,12 @@ import camp.nextstep.edu.missionutils.Console
 
 fun readPurchaseAmount(): Int {
     println("구입금액을 입력해 주세요.")
-    return Console.readLine().toInt()
+    val amount = Console.readLine().toInt()
+
+    require((amount % 1000) == 0) {
+        "[ERROR] Purchase amount must be unit of 1000won"
+    }
+    return amount / 1000
 }
 
 fun readWinningNumbers(): List<Int> {
