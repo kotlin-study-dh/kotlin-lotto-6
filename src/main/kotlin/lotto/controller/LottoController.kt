@@ -2,6 +2,7 @@ package lotto.controller
 
 import lotto.domain.LottoMachine
 import lotto.domain.LottoPurchaseAmount
+import lotto.domain.WinningLotto
 import lotto.generator.NumbersGenerator
 import lotto.ui.InputView
 import lotto.ui.OutputView
@@ -14,23 +15,34 @@ class LottoController(
         val lottoPurchaseAmount = getPurchaseAmount()
         val lottos = lottoMachine.issueLottos(lottoPurchaseAmount, numbersGenerator)
         OutputView.printLottos(lottos)
-        val winningNumbers = InputView.readWinningNumbers()
-        val bonusNumber = InputView.readBonusNumber()
-        val winningLotto = lottoMachine.issueWinningLotto(winningNumbers, bonusNumber)
+        val winningLotto = getWinningLotto(lottoMachine)
         val prizeCounts = lottoMachine.getWinningResult(winningLotto, lottos)
         OutputView.printWinningStatistics(prizeCounts)
         val rateOfReturn = lottoMachine.calculateRateOfReturn(prizeCounts, lottoPurchaseAmount)
         OutputView.printRateOfReturn(rateOfReturn)
     }
 
-    private fun getPurchaseAmount(): LottoPurchaseAmount =
-        runCatching<LottoPurchaseAmount> {
-            val purchaseCount = InputView.readPurchaseAmount()
-            return LottoPurchaseAmount(purchaseCount)
-        }.onFailure { e ->
-            if (e is IllegalArgumentException) {
-                OutputView.printErrorMessage(e.message)
-                return getPurchaseAmount()
-            }
-        }.getOrThrow()
+    private fun getPurchaseAmount(): LottoPurchaseAmount {
+        return retryOnFailure {
+            val purchaseAmount = InputView.readPurchaseAmount()
+            LottoPurchaseAmount(purchaseAmount)
+        }
+    }
+
+    private fun getWinningLotto(lottoMachine: LottoMachine): WinningLotto {
+        return retryOnFailure {
+            val winningNumbers = InputView.readWinningNumbers()
+            val bonusNumber = InputView.readBonusNumber()
+            lottoMachine.issueWinningLotto(winningNumbers, bonusNumber)
+        }
+    }
+
+    private fun <T> retryOnFailure(block: () -> T): T =
+        runCatching<T> { return block() }
+            .onFailure { e ->
+                if (e is IllegalArgumentException) {
+                    OutputView.printErrorMessage(e.message)
+                    return retryOnFailure(block)
+                }
+            }.getOrThrow()
 }
