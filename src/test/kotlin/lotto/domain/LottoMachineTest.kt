@@ -8,7 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
 
 class LottoMachineTest {
-    @ParameterizedTest
+    @ParameterizedTest(name = "amount={0}, expectedCount={1}")
     @CsvSource(
         "1000, 1",
         "5000, 5",
