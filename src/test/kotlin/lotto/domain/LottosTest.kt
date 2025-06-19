@@ -22,7 +22,7 @@ class LottosTest {
         val bonusNumber = LottoNumber(9)
 
         // when
-        val prizes = lottos.checkWinningResults(winningNumbers, bonusNumber)
+        val prizes = lottos.checkWinningResult(winningNumbers, bonusNumber).prizes
 
         // then
         assertThat(prizes).hasSize(1)

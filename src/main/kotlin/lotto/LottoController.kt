@@ -17,12 +17,8 @@ class LottoController(val input: InputView, val output: OutputView) {
         val winningNumbers = retry(input::readWinningNumbers, output::printError)
         val bonusNumber = retry(input::readBonusNumber, output::printError)
 
-        val prizes = lottos.checkWinningResults(winningNumbers, bonusNumber)
-        output.printWinningStatistics(prizes)
-
-        val totalReward = prizes.sumOf { it.reward }
-        val revenue =
-            totalReward.toDouble() / purchaseAmount.value * 100
-        output.printRevenue(revenue)
+        val result = lottos.checkWinningResult(winningNumbers, bonusNumber)
+        output.printWinningStatistics(result.prizes)
+        output.printRevenue(result.revenue)
     }
 }

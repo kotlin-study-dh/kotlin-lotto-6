@@ -9,5 +9,7 @@ data class LottoPurchaseAmount(val value: Int) {
 
     companion object {
         const val PURCHASE_AMOUNT_UNIT = 1_000
+
+        fun from(lottoCount: Int) = LottoPurchaseAmount(lottoCount * PURCHASE_AMOUNT_UNIT)
     }
 }

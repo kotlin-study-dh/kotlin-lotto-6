@@ -5,12 +5,15 @@ import camp.nextstep.edu.missionutils.Randoms
 class Lottos(items: List<Lotto>) {
     val items: List<Lotto> = items.toList()
 
-    fun checkWinningResults(winningNumbers: List<LottoNumber>, bonusNumber: LottoNumber): List<Prize> =
-        items.mapNotNull { lotto ->
+    fun checkWinningResult(winningNumbers: List<LottoNumber>, bonusNumber: LottoNumber): LottoResult {
+        val prizes = items.mapNotNull { lotto ->
             val matchedCount = lotto.match(winningNumbers)
             val containsBonus = lotto.contains(bonusNumber)
             Prize.of(matchedCount, containsBonus)
         }
+        return LottoResult.of(prizes, LottoPurchaseAmount.from(items.size))
+    }
+
 
     companion object {
         fun from(lottoCount: Int): Lottos {
