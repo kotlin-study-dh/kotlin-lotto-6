@@ -38,4 +38,9 @@ object OutputView {
     fun printRateOfReturn(rateOfReturn: Double) {
         println("총 수익률은 ${rateOfReturn}%입니다.")
     }
+
+
+    fun printErrorMessage(message: String?) {
+        println("$ERROR_PREFIX ${message ?: "An unknown error occurred."}")
+    }
 }
