@@ -11,9 +11,9 @@ class Lotto(numbers: List<Int>) {
         require(numbers.distinct().size == SIZE_OF_LOTTO_NUMBERS) { "Lotto numbers must be unique." }
     }
 
-    fun match(winningNumbers: List<LottoNumber>): Int {
-        return _lottoNumbers.count { winningNumbers.contains(it) }
-    }
+    fun match(winningNumbers: List<LottoNumber>): Int = _lottoNumbers.count { winningNumbers.contains(it) }
+
+    fun contains(number: LottoNumber): Boolean = _lottoNumbers.contains(number)
 
     companion object {
         const val SIZE_OF_LOTTO_NUMBERS = 6

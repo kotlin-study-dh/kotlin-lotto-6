@@ -7,6 +7,7 @@ enum class Prize(val matchedCount: Int, val shouldBonusMatch: Boolean, val rewar
     FOURTH(4, false, 50_000),
     FIFTH(3, false, 5_000);
 
+    // todo: improve
     companion object {
         fun of(matchedCount: Int, bonusMatched: Boolean): Prize? = when (matchedCount) {
             6 -> FIRST

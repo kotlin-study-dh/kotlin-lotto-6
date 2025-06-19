@@ -1,14 +1,14 @@
 package lotto.view
 
-import lotto.domain.Lotto
+import lotto.domain.Lottos
 import lotto.domain.Prize
 import java.text.DecimalFormat
 
 class OutputView {
 
-    fun printGeneratedLottos(lottos: List<Lotto>) {
-        println("${lottos.size}개를 구매했습니다.")
-        lottos.forEach { it ->
+    fun printGeneratedLottos(lottos: Lottos) {
+        println("${lottos.items.size}개를 구매했습니다.")
+        lottos.items.forEach { it ->
             val sorted = it.lottoNumbers.map { it.number }.sorted()
             println("[${sorted.joinToString(", ")}]")
         }

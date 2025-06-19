@@ -28,4 +28,14 @@ class LottoTest {
 
         assertThat(matchedCount).isEqualTo(6)
     }
+
+    @Test
+    fun `return if it contains a specific number`() {
+        val lotto = Lotto(listOf(1, 2, 3, 4, 5, 6))
+
+        val contains = lotto.contains(LottoNumber(1))
+
+        assertThat(contains).isTrue()
+
+    }
 }
