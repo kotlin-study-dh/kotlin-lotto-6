@@ -37,7 +37,4 @@ class OutputView {
         println("총 수익률은 ${formattedRevenue}%입니다.")
     }
 
-    fun printError(exception: Exception) {
-        println("[ERROR] ${exception.message}")
-    }
 }

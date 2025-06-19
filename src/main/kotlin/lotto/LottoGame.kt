@@ -1,6 +1,5 @@
 package lotto
 
-import lotto.ErrorHandling.Companion.retry
 import lotto.domain.LottoNumber
 import lotto.domain.Lottos
 import lotto.view.InputView
@@ -15,7 +14,7 @@ class LottoGame(val input: InputView, val output: OutputView) {
     }
 
     private fun generateLottos(): Lottos {
-        val purchaseAmount = retry(input::readPurchaseAmount, output::printError)
+        val purchaseAmount = input.readPurchaseAmount()
         val lottoCount = purchaseAmount.getLottoAmount()
         val lottos = Lottos.from(lottoCount)
         output.printGeneratedLottos(lottos)
@@ -23,8 +22,8 @@ class LottoGame(val input: InputView, val output: OutputView) {
     }
 
     private fun readWinningNumbers(): Pair<List<LottoNumber>, LottoNumber> {
-        val winningNumbers = retry(input::readWinningNumbers, output::printError)
-        val bonusNumber = retry(input::readBonusNumber, output::printError)
+        val winningNumbers = input.readWinningNumbers()
+        val bonusNumber = input.readBonusNumber()
         return Pair(winningNumbers, bonusNumber)
     }
 
