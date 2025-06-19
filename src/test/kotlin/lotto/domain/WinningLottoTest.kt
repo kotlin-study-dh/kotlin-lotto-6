@@ -1,5 +1,6 @@
 package lotto.domain
 
+import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.assertj.core.api.SoftAssertions
 import org.junit.jupiter.api.Test
@@ -53,7 +54,7 @@ class WinningLottoTest {
     }
 
     @Test
-    fun `returns correct prize counts for multiple lotto`() {
+    fun `counts matching numbers correctly`() {
         // given
         val winningNumbers = Lotto(
             listOf(
@@ -68,75 +69,89 @@ class WinningLottoTest {
         val bonusNumber = LottoNumber.from(7)
         val winningLotto = WinningLotto(winningNumbers, bonusNumber)
 
-        val lottos = listOf(
-            // FIRST
-            Lotto(
-                listOf(
-                    LottoNumber.from(1),
-                    LottoNumber.from(2),
-                    LottoNumber.from(3),
-                    LottoNumber.from(4),
-                    LottoNumber.from(5),
-                    LottoNumber.from(6)
-                )
-            ),
-            // SECOND
-            Lotto(
-                listOf(
-                    LottoNumber.from(1),
-                    LottoNumber.from(2),
-                    LottoNumber.from(3),
-                    LottoNumber.from(4),
-                    LottoNumber.from(5),
-                    bonusNumber
-                )
-            ),
-            // FIFTH
-            Lotto(
-                listOf(
-                    LottoNumber.from(1),
-                    LottoNumber.from(2),
-                    LottoNumber.from(3),
-                    LottoNumber.from(7),
-                    LottoNumber.from(8),
-                    LottoNumber.from(9)
-                )
-            ),
-            // NONE
-            Lotto(
-                listOf(
-                    LottoNumber.from(30),
-                    LottoNumber.from(31),
-                    LottoNumber.from(32),
-                    LottoNumber.from(33),
-                    LottoNumber.from(34),
-                    LottoNumber.from(35)
-                )
-            ),
-            // NONE
-            Lotto(
-                listOf(
-                    LottoNumber.from(1),
-                    LottoNumber.from(2),
-                    LottoNumber.from(12),
-                    LottoNumber.from(13),
-                    LottoNumber.from(14),
-                    LottoNumber.from(15)
-                )
+        val lotto = Lotto(
+            listOf(
+                LottoNumber.from(1),
+                LottoNumber.from(2),
+                LottoNumber.from(3),
+                LottoNumber.from(8),
+                LottoNumber.from(9),
+                LottoNumber.from(10)
             )
         )
 
         // when
-        val prizeCounts = winningLotto.compareTo(lottos)
+        val matchCount = winningLotto.countMatchingNumbers(lotto)
 
         // then
-        SoftAssertions.assertSoftly { softly ->
-            softly.assertThat(prizeCounts[Prize.FIRST]).isEqualTo(1)
-            softly.assertThat(prizeCounts[Prize.SECOND]).isEqualTo(1)
-            softly.assertThat(prizeCounts[Prize.THIRD]).isEqualTo(0)
-            softly.assertThat(prizeCounts[Prize.FOURTH]).isEqualTo(0)
-            softly.assertThat(prizeCounts[Prize.FIFTH]).isEqualTo(1)
-            softly.assertThat(prizeCounts[Prize.NONE]).isEqualTo(2)
-        }
+        assertThat(matchCount).isEqualTo(3)
+    }
+
+    @Test
+    fun `true when bonus number is matched by lotto`() {
+        // given
+        val winningNumbers = Lotto(
+            listOf(
+                LottoNumber.from(1),
+                LottoNumber.from(2),
+                LottoNumber.from(3),
+                LottoNumber.from(4),
+                LottoNumber.from(5),
+                LottoNumber.from(6)
+            )
+        )
+        val bonusNumber = LottoNumber.from(7)
+        val winningLotto = WinningLotto(winningNumbers, bonusNumber)
+
+        val lotto = Lotto(
+            listOf(
+                LottoNumber.from(1),
+                LottoNumber.from(2),
+                LottoNumber.from(3),
+                LottoNumber.from(4),
+                LottoNumber.from(5),
+                bonusNumber
+            )
+        )
+
+        // when
+        val isBonusMatched = winningLotto.isBonusNumberMatchedBy(lotto)
+
+        // then
+        assertThat(isBonusMatched).isTrue()
+    }
+
+    @Test
+    fun `false when bonus number is not matched by lotto`() {
+        // given
+        val winningNumbers = Lotto(
+            listOf(
+                LottoNumber.from(1),
+                LottoNumber.from(2),
+                LottoNumber.from(3),
+                LottoNumber.from(4),
+                LottoNumber.from(5),
+                LottoNumber.from(6)
+            )
+        )
+        val bonusNumber = LottoNumber.from(7)
+        val winningLotto = WinningLotto(winningNumbers, bonusNumber)
+
+        val lotto = Lotto(
+            listOf(
+                LottoNumber.from(1),
+                LottoNumber.from(2),
+                LottoNumber.from(3),
+                LottoNumber.from(4),
+                LottoNumber.from(5),
+                LottoNumber.from(8)
+            )
+        )
+
+        // when
+        val isBonusMatched = winningLotto.isBonusNumberMatchedBy(lotto)
+
+        // then
+        assertThat(isBonusMatched).isFalse()
     }
 }
