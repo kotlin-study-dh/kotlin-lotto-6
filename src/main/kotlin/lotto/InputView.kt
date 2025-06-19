@@ -4,8 +4,9 @@ import camp.nextstep.edu.missionutils.Console
 
 fun readPurchaseAmount(): Int {
     println("구입금액을 입력해 주세요.")
-    val amount = Console.readLine().toInt()
 
+    val amount = Console.readLine().toIntOrNull()
+        ?: throw IllegalArgumentException("[ERROR] Purchase amount must be natural number")
     require((amount % 1000) == 0) {
         "[ERROR] Purchase amount must be unit of 1000won"
     }
