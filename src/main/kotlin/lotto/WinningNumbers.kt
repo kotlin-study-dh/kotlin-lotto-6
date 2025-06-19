@@ -1,7 +1,7 @@
 package lotto
 
 data class WinningNumbers(
-    val numbers: LottoNumbers,
+    val numbers: Lotto,
     val bonusNumber: Int
 ) {
     init {
