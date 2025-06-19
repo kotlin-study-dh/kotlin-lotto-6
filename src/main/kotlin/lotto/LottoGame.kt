@@ -5,7 +5,7 @@ import lotto.domain.Lottos
 import lotto.view.InputView
 import lotto.view.OutputView
 
-class LottoGame(val input: InputView, val output: OutputView) {
+class LottoGame(private val input: InputView, private val output: OutputView) {
 
     fun start() {
         val lottos = generateLottos()
