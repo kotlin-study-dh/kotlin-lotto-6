@@ -7,21 +7,21 @@ import java.text.DecimalFormat
 private const val DEFAULT_SEPARATOR = ", "
 private const val PREFIX = "["
 private const val POSTFIX = "]"
+private const val ERROR_PREFIX = "[ERROR]"
 
 object OutputView {
     private val numberFormatter = DecimalFormat("#,###")
 
     fun printLottos(lottos: List<Lotto>) {
-        println("${lottos.size}개를 구매했습니다.")
+        println(System.lineSeparator() + "${lottos.size}개를 구매했습니다.")
         lottos.forEach {
             println(it.getSortedNumbers().map { lottoNumber -> lottoNumber.number }
                 .joinToString(separator = DEFAULT_SEPARATOR, prefix = PREFIX, postfix = POSTFIX))
         }
-        println()
     }
 
     fun printWinningStatistics(prizeCounts: Map<Prize, Int>) {
-        println("당첨 통계")
+        println(System.lineSeparator() + "당첨 통계")
         println("---")
         prizeCounts.filter { Prize.NONE != it.key }
             .forEach { (prize, count) -> println(formatPrizeResult(prize, count)) }
