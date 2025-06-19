@@ -13,7 +13,7 @@ fun readPurchaseAmount(): Int {
 }
 
 fun readWinningNumbers(): List<Int> {
-    println("당첨 번호를 입력해 주세요.")
+    println("\n당첨 번호를 입력해 주세요.")
     return Console.readLine()
         .split(",")
         .filter { it.isNotBlank() }
@@ -21,6 +21,6 @@ fun readWinningNumbers(): List<Int> {
 }
 
 fun readBonusNumber(): Int {
-    println("보너스 번호를 입력해 주세요.")
+    println("\n보너스 번호를 입력해 주세요.")
     return Console.readLine().toInt()
 }
