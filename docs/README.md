@@ -8,27 +8,32 @@
 
 > Define: A collection of six unique LottoNumber (single game)
 
-- [x] validate collection size is 6
-- [x] validate unique LottoNumber
+- [x] validate collection size is exactly 6
+- [x] validate all LottoNumbers are unique
+- [x] check Lotto contains a LottoNumber
+- [x] compare one Lotto with another
 
 ## LottoMachine
 
-- [ ] create Lotto list from LottoPurchaseAmount
+- [x] create Lotto list from LottoPurchaseAmount
+- [x] crate WinningLotto from winning numbers and bonus number
+- [x] evaluate winning results by comparing Lotto with WinningLotto
+- [x] calculate rate of return
 
 ## NumberGenerator
 
-- [ ] generate random LottoNumber in the range 1 .. 45
+- [x] generate random LottoNumber in the range 1 .. 45
 
 ## LottoPurchaseAmount
 
-- [x] validate amount is greater than 1,000
+- [x] validate amount is equal to or greater than 1,000
 - [x] validate amount is multiple of 1,000
 - [x] calculate number of purchased Lotto
 - [x] calculate rate of return
 
 ## Prize
 
-- [x] define prize for each rank
+- [x] define prize for each winning rank
 
 ## WinningLotto
 
@@ -39,17 +44,17 @@
 
 ## InputView
 
-- [ ] read purchase amount
-    - [ ] validate purchase amount is integer
-- [ ] read winning numbers
-    - [ ] validate winning numbers are integers
-    - [ ] validate winning numbers are separated by comma
-- [ ] read bonus number
-    - [ ] validate bonus number is integer
+- [x] read purchase amount
+    - [x] validate purchase amount is integer
+- [x] read winning numbers
+    - [x] split winning numbers by comma
+    - [x] validate winning numbers are integers
+- [x] read bonus number
+    - [x] validate bonus number is integer
 
 ## OutputView
 
-- [ ] print number of purchased Lotto and LottoTicket
-- [ ] print winning results
-- [ ] print yield rate
-- [ ] print error message
+- [x] print number of purchased Lotto and Lotto list
+- [x] print winning statistics
+- [x] print rate of return
+- [x] print error message
