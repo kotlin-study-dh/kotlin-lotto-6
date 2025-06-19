@@ -71,10 +71,11 @@ class LottoGameTest {
 
         // then
         assert(
-            result == mapOf(
+            result.getResult() == mapOf(
                 LottoRank.FIRST to 2,
                 LottoRank.SECOND to 1,
                 LottoRank.THIRD to 1,
+                LottoRank.FOURTH to 0,
                 LottoRank.FIFTH to 1,
                 LottoRank.NO_PRIZE to 1,
             )

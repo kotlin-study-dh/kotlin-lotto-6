@@ -1,6 +1,8 @@
 package lotto.view
 
-import lotto.domain.LottoGame
+import lotto.common.MoneyCalculator
+import lotto.domain.LottoGameResult
+import lotto.domain.LottoRank
 import lotto.domain.Lottos
 
 object OutputView {
@@ -13,11 +15,21 @@ object OutputView {
         }
     }
 
-    fun printGameResult(lottoGame: LottoGame) {
-        val result = lottoGame.result()
+    fun printGameResult(result: LottoGameResult, purchasedPrice: Long) {
+        println("Win Status")
+        println("---")
 
-        result.forEach { (rank, count) ->
-            println("${rank.matchCount} matches (won ${rank.prizeMoney} KRW) in $count lotto(s).")
-        }
+        result.getResult().entries
+            .filter { entry -> entry.key != LottoRank.NO_PRIZE }
+            .forEach { (rank, count) ->
+                println("${LottoRankViewMapper.toText(rank)} - $count lotto(s)")
+            }
+
+        println(
+            String.format(
+                "Your rate of return is: %.1f%%",
+                MoneyCalculator.calculateRateOfReturn(purchasedPrice, result.prizeMoney())
+            )
+        )
     }
 }

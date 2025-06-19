@@ -12,9 +12,9 @@ class LottoGame(
         }
     }
 
-    fun result(): Map<LottoRank, Int> {
-        return lottos.getElements().map { it.calculateRank(winningNumbers, bonusNumber) }
-            .groupingBy { it }
-            .eachCount()
+    fun result(): LottoGameResult {
+        return lottos.getElements()
+            .map { lotto -> lotto.calculateRank(winningNumbers, bonusNumber) }
+            .let { ranks -> LottoGameResult(ranks) }
     }
 }

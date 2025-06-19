@@ -1,5 +1,6 @@
 package lotto
 
+import lotto.constant.LottoConstants
 import lotto.domain.LottoGame
 import lotto.domain.LottoNumber
 import lotto.domain.Lottos
@@ -33,5 +34,5 @@ fun main() {
         LottoGame(lottos, winningNumbers, bonusNumber)
     }
 
-    OutputView.printGameResult(lottoGame)
+    OutputView.printGameResult(lottoGame.result(), lottos.size() * LottoConstants.LOTTO_PRICE)
 }

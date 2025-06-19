@@ -6,19 +6,13 @@ class LottoGameResultTest {
 
     @Test
     fun `FIRST, SECOND, NO_PRIZE - prize money is 2_030_000_000`() {
-        val result = LottoGameResult()
-        result.addRank(LottoRank.FIRST)
-        result.addRank(LottoRank.SECOND)
-        result.addRank(LottoRank.NO_PRIZE)
-
+        val result = LottoGameResult(listOf(LottoRank.FIRST, LottoRank.SECOND, LottoRank.NO_PRIZE))
         assert(result.prizeMoney() == 2_030_000_000L)
     }
 
     @Test
     fun `add the rank of FIRST for twice - then the map has 2 counts for FIRST and 0 for others`() {
-        val result = LottoGameResult()
-        result.addRank(LottoRank.FIRST)
-        result.addRank(LottoRank.FIRST)
+        val result = LottoGameResult(listOf(LottoRank.FIRST, LottoRank.FIRST))
 
         assert(result.getResult() == mapOf(
             LottoRank.FIRST to 2,

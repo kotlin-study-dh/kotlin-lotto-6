@@ -1,20 +1,23 @@
 package lotto.domain
 
 class LottoGameResult(
-    private val counts: MutableMap<LottoRank, Int> = LottoRank.entries
+    ranks: List<LottoRank>
+) {
+    private val rankCounts: MutableMap<LottoRank, Int> = LottoRank.entries
         .associateWith { 0 }
         .toMutableMap()
-) {
 
-    fun addRank(rank: LottoRank) {
-        counts[rank] = counts[rank]!! + 1
+    init {
+        ranks.forEach { rank ->
+            rankCounts[rank] = (rankCounts[rank] ?: 0) + 1
+        }
     }
 
     fun prizeMoney(): Long {
-        return counts.entries.sumOf { (rank, count) -> rank.prizeMoney * count }
+        return rankCounts.entries.sumOf { (rank, count) -> rank.prizeMoney * count }
     }
 
     fun getResult(): Map<LottoRank, Int> {
-        return counts
+        return rankCounts
     }
 }
