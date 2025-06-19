@@ -2,11 +2,12 @@ package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
 import lotto.domain.LottoNumber
+import lotto.domain.LottoPurchaseAmount
 
 class InputView {
-    fun readPurchaseAmount(): Int {
+    fun readPurchaseAmount(): LottoPurchaseAmount {
         println("구입금액을 입력해 주세요.")
-        return Console.readLine().toInt()
+        return LottoPurchaseAmount(Console.readLine().toInt())
     }
 
     fun readWinningNumbers(): List<LottoNumber> {
