@@ -1,7 +1,6 @@
 package lotto
 
-//TODO Either로 바꿔서 처리해보기
-class LottoNumbers(private val numbers: List<Int>) {
+data class LottoNumbers(val numbers: List<Int>) {
     init {
         require(numbers.size == 6) {
             "[ERROR] Lotto must have six numbers"
@@ -14,5 +13,9 @@ class LottoNumbers(private val numbers: List<Int>) {
                 "[ERROR] Lotto number must be between 1 and 45"
             }
         }
+    }
+
+    fun isContain(number: Int): Boolean {
+        return numbers.contains(number)
     }
 }
