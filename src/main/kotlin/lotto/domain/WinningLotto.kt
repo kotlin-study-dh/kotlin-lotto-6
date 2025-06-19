@@ -4,7 +4,6 @@ class WinningLotto(
     val winningNumbers: Lotto,
     val bonusNumber: LottoNumber,
 ) {
-
     init {
         require(bonusNumber !in winningNumbers) {
             "Bonus number must not be included in the winning numbers."
