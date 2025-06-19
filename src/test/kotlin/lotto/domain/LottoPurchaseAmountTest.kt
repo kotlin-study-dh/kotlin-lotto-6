@@ -15,7 +15,7 @@ class LottoPurchaseAmountTest {
         // when & then
         assertThatThrownBy { LottoPurchaseAmount(invalidAmount) }
             .isExactlyInstanceOf(IllegalArgumentException::class.java)
-            .hasMessageContaining("Purchase amount must be greater than 1000.")
+            .hasMessageContaining("Purchase amount must be equal to or greater than 1000.")
     }
 
     @Test
