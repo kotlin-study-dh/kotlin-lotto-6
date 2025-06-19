@@ -5,6 +5,8 @@ data class WinningNumbers(
     val bonusNumber: Int
 ) {
     init {
-        require(numbers.isContain(bonusNumber))
+        require(!numbers.isContain(bonusNumber)) {
+            "[ERROR] LottoNumbers and bonusNumber are duplicated"
+        }
     }
 }
