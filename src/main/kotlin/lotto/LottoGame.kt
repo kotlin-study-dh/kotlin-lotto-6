@@ -1,6 +1,5 @@
 package lotto
 
-import lotto.domain.LottoNumber
 import lotto.domain.Lottos
 import lotto.domain.WinningNumbers
 import lotto.view.InputView
@@ -16,8 +15,8 @@ class LottoGame(private val input: InputView, private val output: OutputView) {
 
     private fun generateLottos(): Lottos {
         val purchaseAmount = input.readPurchaseAmount()
-        val lottoCount = purchaseAmount.getLottoAmount()
-        val lottos = Lottos.from(lottoCount)
+        val lottoAmount = purchaseAmount.lottoAmount
+        val lottos = Lottos.from(lottoAmount)
         output.printGeneratedLottos(lottos)
         return lottos
     }
