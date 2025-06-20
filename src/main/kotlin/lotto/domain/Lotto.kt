@@ -8,7 +8,7 @@ class Lotto(numbers: List<Int>) {
 
     init {
         require(numbers.size == SIZE_OF_LOTTO_NUMBERS) { "The number of lotto numbers must be $SIZE_OF_LOTTO_NUMBERS." }
-        require(numbers.distinct().size == SIZE_OF_LOTTO_NUMBERS) { "Lotto numbers must be unique." }
+        require(numbers.distinct().size == numbers.size) { "Lotto numbers must be unique." }
     }
 
     fun match(winningNumbers: List<LottoNumber>): Int = _lottoNumbers.count { winningNumbers.contains(it) }
