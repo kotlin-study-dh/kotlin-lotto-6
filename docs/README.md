@@ -1,19 +1,17 @@
 ## Requirement
 - [x] range of lotto number : 1~45
 - [x] one lotto has the unique 6 numbers
-- winning numbers pick 6 numbers and 1 bonus number which are unique
-- winning has 1st ~ 5th
+- [x] winning numbers pick 6 numbers and 1 bonus number which are unique
+- [x] winning has 1st ~ 5th
     - 1st: 6 number match / 2,000,000,000won
     - 2nd: 5 number + bonus number match / 30,000,000won
     - 3rd: 5 number match / 1,500,000won
     - 4th: 4 number match / 50,000won
     - 5th: 3 number match/ 5,000won
 
-- issue lottos corresponding the purchase amount. 
-- one lotto is 1000won
-- user enter wrong input
-  - throw IllegalArgumentException
-  - retry user input
+- [x] issue lottos corresponding the purchase amount. 
+- [x] one lotto is 1000won
+
 
 ## Input
 - [x] purchase cose
@@ -24,16 +22,18 @@
   - winning numbers
     - seperate number by comma
     - ex) 1,2,3,4,5,6
-  - bonus number
+  - [x] bonus number
     - only one number
-
+- [x] user enter wrong input
+  - throw IllegalArgumentException
+  - retry user input
 
 Output
-- show number of lotto
-- show lotto number order by ascending 
-- show winning results
-- profit rate is round to the second decimal place
-- print the error which starts with '[ERROR]'
+- [x] show number of lotto
+- [x] show lotto number order by ascending 
+- [x] show winning results
+- [x] profit rate is round to the second decimal place
+- [x] print the error which starts with '[ERROR]'
 
 ### Result
 ```
