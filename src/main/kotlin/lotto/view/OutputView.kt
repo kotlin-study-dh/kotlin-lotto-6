@@ -1,4 +1,8 @@
-package lotto
+package lotto.view
+
+import lotto.domain.Lotto
+import lotto.domain.LottoRank
+import lotto.domain.WinningResult
 
 fun printPurchaseAmount(lottos: List<Lotto>) {
     println("\n${lottos.size}개를 구매했습니다.")

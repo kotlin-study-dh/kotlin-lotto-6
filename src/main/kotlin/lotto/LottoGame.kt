@@ -1,5 +1,10 @@
 package lotto
 
+import lotto.domain.Lotto
+import lotto.domain.WinningNumbers
+import lotto.domain.WinningResult
+import lotto.view.*
+
 class LottoGame {
 
     fun start() {
