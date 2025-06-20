@@ -23,23 +23,26 @@ data class WinningResult(
             for (lotto in lottos) {
                 val matchingResultCnt = winningNumbers.calculateMatchingNumber(lotto)
                 val rank = when (matchingResultCnt) {
-                    6 -> LottoRank.SIX_MATCH
-                    5 -> if (winningNumbers.hasBonusNumber(lotto)) LottoRank.FIVE_BONUS_MATCH else LottoRank.FIVE_MATCH
-                    4 -> LottoRank.FOUR_MATCH
-                    3 -> LottoRank.THREE_MATCH
+                    LottoRank.SIX_MATCH.matchCounts -> LottoRank.SIX_MATCH
+                    LottoRank.FIVE_BONUS_MATCH.matchCounts ->
+                        if (winningNumbers.hasBonusNumber(lotto)) LottoRank.FIVE_BONUS_MATCH
+                        else LottoRank.FIVE_MATCH
+                    LottoRank.FOUR_MATCH.matchCounts -> LottoRank.FOUR_MATCH
+                    LottoRank.THREE_MATCH.matchCounts -> LottoRank.THREE_MATCH
                     else -> LottoRank.NONE_MATCH
                 }
                 winningResult[rank] = winningResult.getValue(rank) + 1
             }
             return winningResult
         }
+        private const val PERCENT_RATE = 100
     }
 
     fun calculateProfitRate(purchaseAmount: Int): BigDecimal {
         val profit = calculateProfit().toBigDecimal()
         val purchaseAmount = (Lotto.LOTTO_PRICE * purchaseAmount).toBigDecimal()
 
-        return (BigDecimal(100).multiply(profit)
+        return (BigDecimal(PERCENT_RATE).multiply(profit)
             .divide(purchaseAmount, 1, RoundingMode.HALF_UP))
     }
 
