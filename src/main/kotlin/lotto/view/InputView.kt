@@ -19,7 +19,7 @@ fun readPurchaseAmount(): Int {
 
 fun readWinningNumbers(): List<Int> {
     println("\n당첨 번호를 입력해 주세요.")
-    return Console.readLine().split(",")
+    return Console.readLine().replace(" ", "").split(",")
         .map {
             it.toIntOrNull()
                 ?: throw IllegalArgumentException("Purchase amount must be natural number")
