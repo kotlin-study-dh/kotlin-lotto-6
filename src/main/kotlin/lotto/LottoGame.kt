@@ -2,6 +2,7 @@ package lotto
 
 import lotto.domain.LottoNumber
 import lotto.domain.Lottos
+import lotto.domain.WinningNumbers
 import lotto.view.InputView
 import lotto.view.OutputView
 
@@ -9,8 +10,8 @@ class LottoGame(private val input: InputView, private val output: OutputView) {
 
     fun start() {
         val lottos = generateLottos()
-        val (winningNumbers, bonusNumber) = readWinningNumbers()
-        showGameResult(lottos, winningNumbers, bonusNumber)
+        val winningNumbers = input.readWinningNumber()
+        showGameResult(lottos, winningNumbers)
     }
 
     private fun generateLottos(): Lottos {
@@ -21,18 +22,11 @@ class LottoGame(private val input: InputView, private val output: OutputView) {
         return lottos
     }
 
-    private fun readWinningNumbers(): Pair<List<LottoNumber>, LottoNumber> {
-        val winningNumbers = input.readWinningNumbers()
-        val bonusNumber = input.readBonusNumber()
-        return Pair(winningNumbers, bonusNumber)
-    }
-
     private fun showGameResult(
         lottos: Lottos,
-        winningNumbers: List<LottoNumber>,
-        bonusNumber: LottoNumber
+        winningNumbers: WinningNumbers,
     ) {
-        val result = lottos.checkWinningResult(winningNumbers, bonusNumber)
+        val result = lottos.checkWinningResult(winningNumbers)
         output.printWinningStatistics(result.prizes)
         output.printRevenue(result.revenue)
     }

@@ -3,6 +3,7 @@ package lotto.view
 import camp.nextstep.edu.missionutils.Console
 import lotto.domain.LottoNumber
 import lotto.domain.LottoPurchaseAmount
+import lotto.domain.WinningNumbers
 
 class InputView {
     fun readPurchaseAmount(): LottoPurchaseAmount = retry {
@@ -10,14 +11,20 @@ class InputView {
         return LottoPurchaseAmount(Console.readLine().toInt())
     }
 
-    fun readWinningNumbers(): List<LottoNumber> = retry {
+    fun readWinningNumber(): WinningNumbers {
+        val winningNumbers = readWinningNumbers()
+        return addBonusNumber(winningNumbers)
+    }
+
+    private fun readWinningNumbers(): List<LottoNumber> = retry {
         println("당첨 번호를 입력해 주세요.")
         return Console.readLine().split(",").map { LottoNumber(it.toInt()) }
     }
 
-    fun readBonusNumber(): LottoNumber = retry {
+    private fun addBonusNumber(winningNumbers: List<LottoNumber>): WinningNumbers = retry {
         println("보너스 번호를 입력해 주세요.")
-        return LottoNumber(Console.readLine().toInt())
+        val bonusNumber = LottoNumber(Console.readLine().toInt())
+        return WinningNumbers(winningNumbers, bonusNumber)
     }
 
     companion object {

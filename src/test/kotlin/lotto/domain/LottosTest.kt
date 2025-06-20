@@ -18,11 +18,12 @@ class LottosTest {
         val fakeWinningNumbers = listOf(1, 2, 3, 4, 5, 6)
 
         val lottos = Lottos(listOf(Lotto(fakeWinningNumbers), Lotto(listOf(9, 10, 11, 12, 13, 14))))
-        val winningNumbers = fakeWinningNumbers.map {  LottoNumber(it) }
+        val winningLotto = fakeWinningNumbers.map {  LottoNumber(it) }
         val bonusNumber = LottoNumber(9)
+        val winningNumbers = WinningNumbers(winningLotto, bonusNumber)
 
         // when
-        val prizes = lottos.checkWinningResult(winningNumbers, bonusNumber).prizes
+        val prizes = lottos.checkWinningResult(winningNumbers).prizes
 
         // then
         assertThat(prizes).hasSize(1)
