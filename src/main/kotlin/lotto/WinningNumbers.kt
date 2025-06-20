@@ -6,7 +6,7 @@ data class WinningNumbers(
 ) {
     init {
         require(!winningLotto.isContain(bonusNumber)) {
-            "[ERROR] LottoNumbers and bonusNumber are duplicated"
+            "LottoNumbers and bonusNumber are duplicated"
         }
     }
 
