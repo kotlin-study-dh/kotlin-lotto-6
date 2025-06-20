@@ -16,15 +16,13 @@ class LottoGame {
     }
 
     private fun getPurchaseResult(): PurchaseResult {
-        val purchaseResult = retryLogic {
+        return retryLogic {
             val purchaseAmount = readPurchaseAmount()
-            val lottos = mutableListOf<Lotto>()
-            for (i in 1..purchaseAmount) {
-                lottos.add(Lotto(LottoNumbersGenerator.generate()))
+            val lottos = List(purchaseAmount) {
+                Lotto(LottoNumbersGenerator.generate())
             }
             PurchaseResult(purchaseAmount, lottos)
         }
-        return purchaseResult
     }
 
     private fun getWinningNumbers(): WinningNumbers {
