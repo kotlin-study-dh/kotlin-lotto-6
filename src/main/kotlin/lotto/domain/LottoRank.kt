@@ -13,12 +13,11 @@ enum class LottoRank(
 
     companion object {
         fun getRank(matchCounts: Int, hasBonus: Boolean): LottoRank {
-            return when {
-                matchCounts == SIX_MATCH.matchCounts -> SIX_MATCH
-                matchCounts == FIVE_MATCH.matchCounts && hasBonus -> FIVE_BONUS_MATCH
-                matchCounts == FIVE_MATCH.matchCounts -> FIVE_MATCH
-                matchCounts == FOUR_MATCH.matchCounts -> FOUR_MATCH
-                matchCounts == THREE_MATCH.matchCounts -> THREE_MATCH
+            return when (matchCounts) {
+                SIX_MATCH.matchCounts -> SIX_MATCH
+                FIVE_MATCH.matchCounts -> if (hasBonus) FIVE_BONUS_MATCH else FIVE_MATCH
+                FOUR_MATCH.matchCounts -> FOUR_MATCH
+                THREE_MATCH.matchCounts -> THREE_MATCH
                 else -> NONE_MATCH
             }
         }
