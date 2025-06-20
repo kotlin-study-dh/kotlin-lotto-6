@@ -11,11 +11,7 @@ data class WinningNumbers(
     }
 
     fun calculateMatchingNumber(lotto: Lotto): Int {
-        val matchingCnt = lotto.numbers.count { winningLotto.isContain(it) }
-        if (lotto.isContain(bonusNumber)) {
-            return matchingCnt + 1
-        }
-        return matchingCnt
+        return lotto.numbers.count { winningLotto.isContain(it) }
     }
 
     fun hasBonusNumber(lotto: Lotto) = lotto.numbers.contains(bonusNumber)
