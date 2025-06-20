@@ -14,5 +14,5 @@ data class WinningNumbers(
         return lotto.numbers.count { winningLotto.isContain(it) }
     }
 
-    fun hasBonusNumber(lotto: Lotto) = lotto.numbers.contains(bonusNumber)
+    fun hasBonusNumber(lotto: Lotto) = bonusNumber in lotto.numbers
 }
