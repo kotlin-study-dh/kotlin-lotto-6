@@ -9,5 +9,18 @@ enum class LottoRank(
     FIVE_MATCH(5, 1_500_000),
     FOUR_MATCH(4, 50_000),
     THREE_MATCH(3, 5_000),
-    NONE_MATCH(0, 0)
+    NONE_MATCH(0, 0);
+
+    companion object {
+        fun getRank(matchCounts: Int, hasBonus: Boolean): LottoRank {
+            return when {
+                matchCounts == SIX_MATCH.matchCounts -> SIX_MATCH
+                matchCounts == FIVE_MATCH.matchCounts && hasBonus -> FIVE_BONUS_MATCH
+                matchCounts == FIVE_MATCH.matchCounts -> FIVE_MATCH
+                matchCounts == FOUR_MATCH.matchCounts -> FOUR_MATCH
+                matchCounts == THREE_MATCH.matchCounts -> THREE_MATCH
+                else -> NONE_MATCH
+            }
+        }
+    }
 }

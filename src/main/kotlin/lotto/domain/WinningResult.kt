@@ -22,15 +22,9 @@ data class WinningResult(
 
             for (lotto in lottos) {
                 val matchingResultCnt = winningNumbers.calculateMatchingNumber(lotto)
-                val rank = when (matchingResultCnt) {
-                    LottoRank.SIX_MATCH.matchCounts -> LottoRank.SIX_MATCH
-                    LottoRank.FIVE_BONUS_MATCH.matchCounts ->
-                        if (winningNumbers.hasBonusNumber(lotto)) LottoRank.FIVE_BONUS_MATCH
-                        else LottoRank.FIVE_MATCH
-                    LottoRank.FOUR_MATCH.matchCounts -> LottoRank.FOUR_MATCH
-                    LottoRank.THREE_MATCH.matchCounts -> LottoRank.THREE_MATCH
-                    else -> LottoRank.NONE_MATCH
-                }
+                val hasBonus = winningNumbers.hasBonusNumber(lotto)
+
+                val rank = LottoRank.getRank(matchingResultCnt, hasBonus)
                 winningResult[rank] = winningResult.getValue(rank) + 1
             }
             return winningResult
