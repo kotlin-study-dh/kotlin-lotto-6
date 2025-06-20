@@ -1,7 +1,7 @@
 package lotto.domain
 
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class WinningNumbersTest {
 
@@ -11,7 +11,7 @@ class WinningNumbersTest {
         val winningNumbers = listOf(1, 2, 3, 4, 5).map { LottoNumber(it) }
 
         // when & then
-        assertThrows(IllegalArgumentException::class.java) {
+        assertThrows<IllegalArgumentException> {
             WinningNumbers(winningNumbers, LottoNumber(6))
         }
     }
@@ -23,7 +23,7 @@ class WinningNumbersTest {
             .map { LottoNumber(it) }
 
         // when & then
-        assertThrows(IllegalArgumentException::class.java) {
+        assertThrows<IllegalArgumentException> {
             WinningNumbers(winningNumbers, LottoNumber(6))
         }
     }
@@ -36,7 +36,7 @@ class WinningNumbersTest {
         val bonusNumber = LottoNumber(6)
 
         // when & then
-        assertThrows(IllegalArgumentException::class.java) {
+        assertThrows<IllegalArgumentException> {
             WinningNumbers(winningNumbers, bonusNumber)
         }
 

@@ -1,6 +1,5 @@
 package lotto.domain
 
-import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class LottoResultTest {
@@ -22,8 +21,8 @@ class LottoResultTest {
         val expectedReward = Prize.FIFTH.reward + Prize.FOURTH.reward + Prize.SECOND.reward
         val expectedRevenue = expectedReward.toDouble() / purchaseAmount.value * 100
 
-        assertThat(result.revenue).isEqualTo(expectedRevenue)
-        assertThat(result.prizes).containsExactlyElementsOf(prizes)
+        assert(result.revenue == expectedRevenue)
+        assert(result.prizes == prizes)
     }
 
     @Test
@@ -36,8 +35,8 @@ class LottoResultTest {
         val result = LottoResult.of(prizes, purchaseAmount)
 
         // then
-        assertThat(result.revenue).isEqualTo(0.0)
-        assertThat(result.prizes).isEmpty()
+        assert(result.revenue == 0.0)
+        assert(result.prizes.isEmpty())
     }
 
     @Test
@@ -48,10 +47,10 @@ class LottoResultTest {
 
         // when
         val result = LottoResult.of(prizes, purchaseAmount)
+        val expectedRevenue = Prize.FIRST.reward.toDouble() / purchaseAmount.value * 100
 
         // then
-        val expectedRevenue = Prize.FIRST.reward.toDouble() / purchaseAmount.value * 100
-        assertThat(result.revenue).isEqualTo(expectedRevenue)
-        assertThat(result.prizes).containsExactly(Prize.FIRST)
+        assert(result.revenue == expectedRevenue)
+        assert(result.prizes.contains(Prize.FIRST))
     }
 }
