@@ -8,10 +8,8 @@ data class Lotto(val numbers: List<Int>) {
         require(numbers.size == numbers.toSet().size) {
             "Lotto has duplicate number"
         }
-        for (number in numbers) {
-            require(number >= LOTTO_MIN_NUMBER && number <= LOTTO_MAX_NUMBER) {
-                "Lotto number must be between 1 and 45"
-            }
+        require(numbers.all { it in LOTTO_MIN_NUMBER..LOTTO_MAX_NUMBER }) {
+            "Lotto number must be between $LOTTO_MIN_NUMBER and $LOTTO_MAX_NUMBER"
         }
     }
 
