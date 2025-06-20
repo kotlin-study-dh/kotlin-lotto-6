@@ -10,7 +10,7 @@ class LottoNumberTest {
     @ParameterizedTest
     @ValueSource(ints = [-1, 0, 46])
     fun `throw exception when number is out of range`(outOfRange: Int) {
-        assertThrows<IllegalArgumentException> { LottoNumber(outOfRange)  }
+        assertThrows<IllegalArgumentException> { LottoNumber(outOfRange) }
     }
 
     @Test
