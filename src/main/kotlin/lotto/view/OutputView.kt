@@ -15,14 +15,14 @@ class OutputView {
     }
 
     fun printWinningStatistics(prizes: List<Prize>) {
-        val prizeToCount = Prize.entries.sortedBy { it.matchedCount }
+        val prizeToCount = Prize.entries.sortedBy { it.shouldMatchedAtLeast }
             .associateWith { prize -> prizes.count { it == prize } }
         println("당첨 통계")
         println("---")
 
         prizeToCount.forEach { prize, count ->
             println(
-                "${prize.matchedCount}개 일치${if (prize.shouldBonusMatch)", 보너스 볼 일치" else ""} (${
+                "${prize.shouldMatchedAtLeast}개 일치${if (prize.shouldBonusMatch)", 보너스 볼 일치" else ""} (${
                     String.format(
                         "%,d",
                         prize.reward
