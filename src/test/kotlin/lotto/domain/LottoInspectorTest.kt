@@ -3,7 +3,7 @@ package lotto.domain
 import lotto.domain.number.BonusNumber
 import lotto.domain.number.Numbers
 import org.assertj.core.api.Assertions
-import kotlin.test.Test
+import org.junit.jupiter.api.Test
 
 class LottoInspectorTest {
 

@@ -1,8 +1,8 @@
 package lotto.domain
 
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import kotlin.test.assertEquals
 
 class LottoExchangerTest {
 
@@ -19,7 +19,7 @@ class LottoExchangerTest {
         val exchanger = LottoExchanger(2000)
 
         // when & then
-        assertEquals(exchanger.purchase().size, 2)
+        Assertions.assertEquals(exchanger.purchase().size, 2)
     }
 
     @Test
@@ -32,6 +32,6 @@ class LottoExchangerTest {
         val yieldRate = exchanger.yieldRate(listOf(Score.THIRD))
 
         // then
-        assertEquals(Score.THIRD.prize / purchaseAmount.toDouble(), yieldRate)
+        Assertions.assertEquals(Score.THIRD.prize / purchaseAmount.toDouble(), yieldRate)
     }
 }

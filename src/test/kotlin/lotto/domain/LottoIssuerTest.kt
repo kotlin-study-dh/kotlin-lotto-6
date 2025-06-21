@@ -2,7 +2,7 @@ package lotto.domain
 
 import lotto.domain.number.FixedNumberGenerator
 import org.assertj.core.api.Assertions
-import kotlin.test.Test
+import org.junit.jupiter.api.Test
 
 class LottoIssuerTest {
 
