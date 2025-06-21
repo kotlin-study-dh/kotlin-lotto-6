@@ -31,7 +31,7 @@ class Lottos(items: List<Lotto>) {
                 LottoNumber.MAX_VALUE,
                 Lotto.SIZE_OF_LOTTO_NUMBERS
             )
-            return Lotto(numbers)
+            return Lotto.from(numbers)
         }
     }
 }

@@ -1,6 +1,5 @@
 package lotto.view
 
-import lotto.domain.LottoNumber
 import lotto.domain.Lottos
 import lotto.domain.Prize
 import java.text.DecimalFormat
@@ -9,9 +8,7 @@ class OutputView {
 
     fun printGeneratedLottos(lottos: Lottos) {
         println("${lottos.items.size}개를 구매했습니다.")
-        lottos.items.forEach {
-            println(it.lottoNumbers.map(LottoNumber::number).sorted())
-        }
+        lottos.items.forEach { println(it.getNumbers().sorted()) }
     }
 
     fun printWinningStatistics(prizes: List<Prize>) {
