@@ -39,6 +39,6 @@ class LottoExchangerTest {
         val yieldRate = exchanger.yieldRate(listOf(Score.THIRD))
 
         // then
-        Assertions.assertEquals(Score.THIRD.prize / purchaseAmount.toDouble(), yieldRate)
+        Assertions.assertEquals(Score.THIRD.prize / purchaseAmount.toDouble() * 100, yieldRate)
     }
 }

@@ -54,7 +54,7 @@ class NumbersTest {
         val numbers = Numbers.fromInts(1, 2, 3, 4, 5, 6)
 
         // when
-        val match = numbers.match(bonusNumber)
+        val match = numbers.hasBonusNumber(bonusNumber)
 
         // then
         Assertions.assertThat(match).isTrue
@@ -67,7 +67,7 @@ class NumbersTest {
         val numbers = Numbers.fromInts(1, 2, 3, 4, 5, 6)
 
         // when
-        val match = numbers.match(bonusNumber)
+        val match = numbers.hasBonusNumber(bonusNumber)
 
         // then
         Assertions.assertThat(match).isFalse

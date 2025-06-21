@@ -27,7 +27,7 @@ class Numbers private constructor(val winningNumbers: List<Number>) {
         return winningNumbers.count { it in otherNumbers.winningNumbers }
     }
 
-    fun match(bonusNumber: BonusNumber): Boolean {
+    fun hasBonusNumber(bonusNumber: BonusNumber): Boolean {
         return winningNumbers.any { bonusNumber.number == it.number }
     }
 }
