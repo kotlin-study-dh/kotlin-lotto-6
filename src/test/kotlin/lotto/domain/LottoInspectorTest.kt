@@ -2,7 +2,6 @@ package lotto.domain
 
 import lotto.domain.number.BonusNumber
 import lotto.domain.number.Numbers
-import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 
 class LottoInspectorTest {
@@ -19,7 +18,7 @@ class LottoInspectorTest {
         val score = inspector.inspect(listOf(guessingNumbers))[0]
 
         // then
-        Assertions.assertThat(score).isSameAs(Score.FIRST)
+        assert(score === Score.FIRST)
     }
 
     @Test
@@ -34,7 +33,7 @@ class LottoInspectorTest {
         val score = inspector.inspect(listOf(guessingNumbers))[0]
 
         // then
-        Assertions.assertThat(score).isSameAs(Score.SECOND)
+        assert(score === Score.SECOND)
     }
 
     @Test
@@ -49,7 +48,7 @@ class LottoInspectorTest {
         val score = inspector.inspect(listOf(guessingNumbers))[0]
 
         // then
-        Assertions.assertThat(score).isSameAs(Score.THIRD)
+        assert(score === Score.THIRD)
     }
 
     @Test
@@ -64,7 +63,7 @@ class LottoInspectorTest {
         val score = inspector.inspect(listOf(guessingNumbers))[0]
 
         // then
-        Assertions.assertThat(score).isSameAs(Score.FOURTH)
+        assert(score === Score.FOURTH)
     }
 
     @Test
@@ -79,6 +78,6 @@ class LottoInspectorTest {
         val score = inspector.inspect(listOf(guessingNumbers))[0]
 
         // then
-        Assertions.assertThat(score).isSameAs(Score.FIFTH)
+        assert(score === Score.FIFTH)
     }
 }
