@@ -21,6 +21,12 @@ class NumbersTest {
     }
 
     @Test
+    fun `throw exception if numbers are duplicate2`() {
+        Assertions.assertThatThrownBy { Numbers.fromInts(1, 2, 2, 3, 4, 5, 6) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+    }
+
+    @Test
     fun `the selection must include 6 winning numbers`() {
         Assertions.assertThatCode { Numbers.fromInts(1, 2, 3, 4, 5, 6) }
             .doesNotThrowAnyException()
