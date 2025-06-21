@@ -6,11 +6,13 @@ import lotto.domain.number.Numbers
 class ConsoleOutput {
 
     fun purchaseResponse(tickets: List<Numbers>) {
-        val primitiveNumbers =
-            tickets.map { guessingNumber -> guessingNumber.winningNumbers.map { number -> number.number } }
-        println("bought ${primitiveNumbers.size} of them.")
-        primitiveNumbers.map { it -> it.sorted() }
-            .forEach { println(it) }
+        println("bought ${tickets.size} of them.")
+        tickets.forEach { ticket ->
+            ticket.winningNumbers
+                .map { it.number }
+                .sorted()
+                .also { println(it) }
+        }
     }
 
     fun winningStatisticsResponse(prizes: List<Score>) {
