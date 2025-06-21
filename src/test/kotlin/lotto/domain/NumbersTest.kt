@@ -4,38 +4,34 @@ import lotto.domain.number.BonusNumber
 import lotto.domain.number.Numbers
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 
 class NumbersTest {
 
     @Test
     fun `make sure the numbers are not duplicated`() {
-        Assertions.assertThatCode { Numbers.fromInts(1, 2, 3, 4, 5, 6) }
-            .doesNotThrowAnyException()
+        assertDoesNotThrow { Numbers.fromInts(1, 2, 3, 4, 5, 6) }
     }
 
     @Test
     fun `throw exception if numbers are duplicate`() {
-        Assertions.assertThatThrownBy { Numbers.fromInts(1, 2, 3, 4, 5, 5) }
-            .isInstanceOf(IllegalArgumentException::class.java)
+        assertThrows<IllegalArgumentException> { Numbers.fromInts(1, 2, 3, 4, 5, 5) }
     }
 
     @Test
     fun `throw exception if numbers are duplicate2`() {
-        Assertions.assertThatThrownBy { Numbers.fromInts(1, 2, 2, 3, 4, 5, 6) }
-            .isInstanceOf(IllegalArgumentException::class.java)
+        assertThrows<IllegalArgumentException> { Numbers.fromInts(1, 2, 2, 3, 4, 5, 6) }
     }
 
     @Test
     fun `the selection must include 6 winning numbers`() {
-        Assertions.assertThatCode { Numbers.fromInts(1, 2, 3, 4, 5, 6) }
-            .doesNotThrowAnyException()
+        assertDoesNotThrow { Numbers.fromInts(1, 2, 3, 4, 5, 6) }
     }
 
     @Test
     fun `throw exception if selection numbers are not included 6`() {
-        Assertions.assertThatThrownBy { Numbers.fromInts(1, 2, 3, 4, 5, 6, 7) }
-            .isInstanceOf(IllegalArgumentException::class.java)
+        assertThrows<IllegalArgumentException> { Numbers.fromInts(1, 2, 3, 4, 5, 6, 7) }
     }
 
     @Test
