@@ -9,6 +9,9 @@ class LottoExchanger(val purchaseAmount: Int) {
         require(purchaseAmount % PURCHASE_AMOUNT_PER_CASE == 0) {
             throw IllegalArgumentException("Invalid amount: $purchaseAmount")
         }
+        require(purchaseAmount > 0) {
+            throw IllegalArgumentException("Invalid purchase amount: $purchaseAmount")
+        }
     }
 
     companion object {

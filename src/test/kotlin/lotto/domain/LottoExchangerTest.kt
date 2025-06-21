@@ -23,6 +23,13 @@ class LottoExchangerTest {
     }
 
     @Test
+    fun `purchase_amount should be greater than 0`() {
+        assertThrows<IllegalArgumentException> {
+            LottoExchanger(-1)
+        }
+    }
+
+    @Test
     fun `calculate yield rate`() {
         // given
         val purchaseAmount = 2000
