@@ -29,6 +29,6 @@ class LottoExchanger(val purchaseAmount: Int) {
     fun yieldRate(scores: List<Score>): Double {
         val totalProfit = scores.map { it -> it.prize }
             .reduce { acc, score -> acc + score }
-        return totalProfit / purchaseAmount.toDouble()
+        return (totalProfit / purchaseAmount.toDouble()) * 100
     }
 }
