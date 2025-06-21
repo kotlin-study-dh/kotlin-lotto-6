@@ -16,7 +16,8 @@ class OutputView {
         println("---")
 
         val prizeToCount = Prize.entries
-            .sortedBy { it.shouldMatchedAtLeast }
+            .filterNot { it == Prize.NOTHING }
+            .sortedBy { it.reward }
             .associateWith { prize -> prizes.count { it == prize } }
 
         prizeToCount.forEach { (prize, count) ->
