@@ -1,5 +1,7 @@
 package lotto.domain
 
+import kotlin.math.roundToInt
+
 class LottoPurchaseAmount(
     val amount: Int,
 ) {
@@ -16,7 +18,7 @@ class LottoPurchaseAmount(
         return roundToFirstDecimal(rateOfReturn)
     }
 
-    private fun roundToFirstDecimal(rateOfReturn: Double) = Math.round(rateOfReturn * 10) / 10.0
+    private fun roundToFirstDecimal(rateOfReturn: Double) = (rateOfReturn * 10).roundToInt() / 10.0
 
     companion object {
         private const val LOTTO_PRICE = 1000
