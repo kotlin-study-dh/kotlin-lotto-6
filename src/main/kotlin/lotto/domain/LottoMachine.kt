@@ -5,7 +5,7 @@ import java.util.EnumMap
 
 class LottoMachine {
     fun issueLottos(purchaseAmount: LottoPurchaseAmount, numbersGenerator: NumbersGenerator): List<Lotto> {
-        val purchaseQuantity = purchaseAmount.getPurchaseQuantity()
+        val purchaseQuantity = purchaseAmount.purchaseQuantity
         return List(purchaseQuantity) {
             val lottoNumbers = numbersGenerator.generate()
                 .map { LottoNumber.from(it) }

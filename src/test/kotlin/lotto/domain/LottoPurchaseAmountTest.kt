@@ -48,7 +48,7 @@ class LottoPurchaseAmountTest {
         val lottoPurchaseAmount = LottoPurchaseAmount(amount)
 
         // when
-        val purchaseQuantity = lottoPurchaseAmount.getPurchaseQuantity()
+        val purchaseQuantity = lottoPurchaseAmount.purchaseQuantity
 
         // then
         assertThat(purchaseQuantity).isEqualTo(5)
