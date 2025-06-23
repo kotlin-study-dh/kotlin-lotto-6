@@ -13,7 +13,7 @@ class LottoGame(
     }
 
     fun result(): LottoGameResult {
-        return lottos.getElements()
+        return lottos.elements
             .map { lotto -> lotto.calculateRank(winningNumbers, bonusNumber) }
             .let { ranks -> LottoGameResult(ranks) }
     }

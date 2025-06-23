@@ -10,7 +10,7 @@ object OutputView {
     fun printLottoNumbers(lottos: Lottos) {
         println("You have bought ${lottos.size()} lotto(s)")
 
-        lottos.getElements().forEach {
+        lottos.elements.forEach {
             println(it.getNumbers())
         }
     }

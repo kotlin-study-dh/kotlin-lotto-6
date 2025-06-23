@@ -2,7 +2,7 @@ package lotto.domain
 
 import lotto.constant.LottoConstants
 
-class Lottos(private val elements: List<Lotto>) {
+class Lottos(val elements: List<Lotto>) {
 
     init {
         require(elements.isNotEmpty()) { "At least one lotto has to be bought." }
@@ -23,6 +23,4 @@ class Lottos(private val elements: List<Lotto>) {
     }
 
     fun size() = elements.size
-
-    fun getElements() = elements
 }
