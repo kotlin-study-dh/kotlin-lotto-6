@@ -39,7 +39,7 @@ class LottoGame {
         winningNumbers: WinningNumbers
     ): WinningResult = WinningResult(purchaseResult.lottos, winningNumbers)
 
-    private inline fun <T> retryLogic(block: () -> T): T {
+    private inline fun <T> retryLogic(crossinline block: () -> T): T {
         while (true) {
             try {
                 return block()
