@@ -11,11 +11,7 @@ class WinningNumbers(private val numbers: List<LottoNumber>) {
     }
 
     companion object {
-        fun ofNumbers(numbers: List<Int>): WinningNumbers {
-            numbers.map { LottoNumber(it) }
-                .toList()
-                .also { return WinningNumbers(it) }
-        }
+        fun ofNumbers(numbers: List<Int>) = WinningNumbers(numbers.map { LottoNumber(it) })
     }
 
     fun contains(number: LottoNumber) = numbers.contains(number)
