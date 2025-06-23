@@ -19,7 +19,7 @@ object OutputView {
         println("Win Status")
         println("---")
 
-        result.getResult().entries
+        result.rankCounts.entries
             .filter { entry -> entry.key != LottoRank.NO_PRIZE }
             .forEach { (rank, count) ->
                 println("${LottoRankViewMapper.toText(rank)} - $count lotto(s)")

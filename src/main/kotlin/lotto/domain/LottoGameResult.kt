@@ -3,7 +3,7 @@ package lotto.domain
 class LottoGameResult(
     ranks: List<LottoRank>
 ) {
-    private val rankCounts: MutableMap<LottoRank, Int> = LottoRank.entries
+    val rankCounts: MutableMap<LottoRank, Int> = LottoRank.entries
         .associateWith { 0 }
         .toMutableMap()
 
@@ -15,9 +15,5 @@ class LottoGameResult(
 
     fun prizeMoney(): Long {
         return rankCounts.entries.sumOf { (rank, count) -> rank.prizeMoney * count }
-    }
-
-    fun getResult(): Map<LottoRank, Int> {
-        return rankCounts
     }
 }

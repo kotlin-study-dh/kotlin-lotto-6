@@ -71,7 +71,7 @@ class LottoGameTest {
 
         // then
         assert(
-            result.getResult() == mapOf(
+            result.rankCounts == mapOf(
                 LottoRank.FIRST to 2,
                 LottoRank.SECOND to 1,
                 LottoRank.THIRD to 1,

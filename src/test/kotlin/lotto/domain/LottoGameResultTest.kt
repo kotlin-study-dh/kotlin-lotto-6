@@ -14,7 +14,7 @@ class LottoGameResultTest {
     fun `add the rank of FIRST for twice - then the map has 2 counts for FIRST and 0 for others`() {
         val result = LottoGameResult(listOf(LottoRank.FIRST, LottoRank.FIRST))
 
-        assert(result.getResult() == mapOf(
+        assert(result.rankCounts == mapOf(
             LottoRank.FIRST to 2,
             LottoRank.SECOND to 0,
             LottoRank.THIRD to 0,
