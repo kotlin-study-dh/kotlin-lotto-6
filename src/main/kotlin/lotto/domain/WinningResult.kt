@@ -14,7 +14,7 @@ data class WinningResult(
     )
 
     companion object {
-        fun calculateResult(lottos: List<Lotto>, winningNumbers: WinningNumbers): Map<LottoRank, Int> {
+        private fun calculateResult(lottos: List<Lotto>, winningNumbers: WinningNumbers): Map<LottoRank, Int> {
             val winningResult = mutableMapOf<LottoRank, Int>().withDefault { 0 }
             LottoRank.entries.forEach { rank ->
                 winningResult[rank] = 0
