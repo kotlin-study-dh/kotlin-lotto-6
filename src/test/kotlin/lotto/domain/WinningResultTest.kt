@@ -2,6 +2,7 @@ package lotto.domain
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertAll
 import java.math.BigDecimal
 
 class WinningResultTest {
@@ -13,9 +14,13 @@ class WinningResultTest {
             Lotto(listOf(3, 4, 5, 6, 34, 35))
         )
         val winningNumbers = WinningNumbers(Lotto(listOf(1, 2, 3, 4, 5, 6)), 45)
-        val winningResult = WinningResult.calculateResult(lottos, winningNumbers)
+        val winningResult = WinningResult(lottos, winningNumbers)
 
-        assertThat(winningResult).isEqualTo(expectedWinningResult)
+        assertAll({
+            assertThat(winningResult.getByRank(LottoRank.THREE_MATCH)).isEqualTo(1)
+            assertThat(winningResult.getByRank(LottoRank.FOUR_MATCH)).isEqualTo(1)
+            assertThat(winningResult.getByRank(LottoRank.FIVE_MATCH)).isEqualTo(0)
+        })
     }
 
     @Test
