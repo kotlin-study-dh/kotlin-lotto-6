@@ -8,7 +8,7 @@ class Lottos(items: List<Lotto>) {
     fun checkWinningResult(winningNumbers: WinningNumbers): LottoResult {
         val (winningLotto, bonusNumber) = winningNumbers
         val prizes = items
-            .mapNotNull { lotto ->
+            .map { lotto ->
                 val matchedCount = lotto.match(winningLotto)
                 val containsBonus = lotto.contains(bonusNumber)
                 Prize.of(matchedCount, containsBonus)
