@@ -20,8 +20,9 @@ class LottoExchanger(val purchaseAmount: Int) {
 
     fun purchase(): List<Numbers> {
         val ticketSize = purchaseAmount / PURCHASE_AMOUNT_PER_CASE
+        val randomNumberGenerator = RandomNumberGenerator()
         return List(ticketSize) {
-            val issuer = LottoIssuer(RandomNumberGenerator())
+            val issuer = LottoIssuer(randomNumberGenerator)
             issuer.issue()
         }
     }
