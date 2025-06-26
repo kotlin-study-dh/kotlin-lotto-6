@@ -1,49 +1,49 @@
-# 기능 요구사항
+# Feature Requirements
 
-## 게임 규칙
+## Rule
 
-- [x] 1개의 로또를 발행할 때 중복되지 않는 6개의 숫자를 뽑는다.
+- [x] Draw 6 non-overlapping numbers when issuing 1 lotto ticket.
 
-### 로또     
-  - [x] 로또는 6개의 숫자를 가진다.
+### Lotto     
+  - [x] The lotto has six numbers.
 
-### 로또 번호
-- 로또 번호의 숫자 범위는 1~45까지이다.
-  - [x] 로또 번호가 범위를 벗어나면 예외 처리한다.
+### Lotto number
+- Lotto numbers can range from 1 to 45.
+  - [x] Throw an exception if the lotto number is out of range.
 
-### 당첨 번호 추첨
-  - [x] 당첨 번호 추첨 시 중복되지 않는 숫자 6개와 보너스 번호 1개를 뽑는다. 
+### Drawing winning numbers
+  - [x] The winning numbers are drawn from 6 non-overlapping numbers and 1 bonus number.
   
-### 당첨 기준
-  - 당첨은 1등부터 5등까지 있다. 당첨 기준과 금액은 아래와 같다.
-    - [x] 1등: 6개 번호 일치 / 2,000,000,000원
-    - [x] 2등: 5개 번호 + 보너스 번호 일치 / 30,000,000원
-    - [x] 3등: 5개 번호 일치 / 1,500,000원
-    - [x] 4등: 4개 번호 일치 / 50,000원
-    - [x] 5등: 3개 번호 일치 / 5,000원
+### Winning Criteria
+  - There are prizes for first through fifth place. The criteria and prize amounts are as follows
+    - [x] 1st prize: 6 number matches / 2,000,000,000 KRW
+    - [x] 2nd place: Match 5 numbers + bonus number / 30,000,000 KRW
+    - [x] 3rd place: Match 5 numbers / 1,500,000 KRW
+    - [x] 4th place: Match 4 numbers / 50,000 KRW
+    - [x] 5th place: Match 3 numbers / 5,000 KRW
 
-### 로또 진행 과정
-- [x] 로또 구입 금액을 입력하면 구입 금액에 해당하는 만큼 로또를 발행해야 한다.
-- [x] 로또 1장의 가격은 1,000원이다.
-- [x] 당첨 번호와 보너스 번호를 입력받는다.
-- [x] 사용자가 구매한 로또 번호와 당첨 번호를 비교하여 당첨 내역 및 수익률을 출력하고 로또 게임을 종료한다.
-- [ ] 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 그 부분부터 입력을 다시 받는다.
-- [ ] Exception이 아닌 IllegalArgumentException, IllegalStateException 등과 같은 명확한 유형을 처리한다.
+### Lotto progression
+- [x] After you enter the lotto purchase amount, you need to issue lotto tickets for the amount of the purchase.
+- [x] One lotto ticket costs 1,000 won.
+- [x] Enter the winning number and bonus number.
+- [x] Compares the user's purchased lotto numbers with the winning numbers, prints the winning details and percentage, and ends the lotto game.
+- [x] If the user enters an invalid value, raise an IllegalArgumentException, print an error message starting with "[ERROR]", and accept the input again from that point.
+- [x] Handle unambiguous types such as IllegalArgumentException, IllegalStateException, etc. rather than Exception.
 
-## 입력 요구사항
+## Input Requirements
 
-- 로또 구입 금액을 입력 받을 수 있다.
-  - [x] 구입 금액은 1,000원 단위로 입력 받는다.
-  - [x] 구입금액이 1,000원으로 나누어 떨어지지 않는 경우 예외 처리한다.
-- [x] 당첨 번호를 입력 받는다.
-  - [x] 번호는 쉼표(,)를 기준으로 구분한다.
-- [x] 보너스 번호를 입력 받는다.
+- You can enter the amount of your lotto purchase.
+  - [x] The purchase amount is entered in 1,000 won increments.
+  - [x] Exception if the purchase amount is not divisible by 1,000 won.
+- [x] Enter the winning number.
+  - [x] The numbers are separated by commas (,).
+- [x] Enter the bonus number.
 
 
-## 출력 요구사항
+## Output Requirements
 
-- [x] 발행한 로또 수량 및 번호를 출력한다.
-- [x] 로또 번호는 오름차순으로 정렬하여 보여준다.
-- [x] 당첨 내역을 출력한다.
-- [x] 수익률은 소수점 둘째 자리에서 반올림한다. (ex. 100.0%, 51.5%, 1,000,000.0%)
-- [x] 예외 상황 시 에러 문구를 출력해야 한다. 단, 에러 문구는 "[ERROR]"로 시작해야 한다.
+- [x] Print the number of lotto tickets issued and the numbers.
+- [x] Lotto numbers are displayed in ascending order.
+- [x] Print the winning details.
+- [x] Returns are rounded to the second decimal place. (ex. 100.0%, 51.5%, 1,000,000.0%)
+- [x] An error message should be printed when an exception occurs. However, the error text must start with "[ERROR]".

@@ -1,6 +1,5 @@
 package lotto.domain
 
-import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class LottosTest {
@@ -9,7 +8,7 @@ class LottosTest {
         val lottoCount = 3
         val lottos = Lottos.from(lottoCount)
 
-        assertThat(lottos.items.size).isEqualTo(3)
+        assert(lottos.items.size == 3)
     }
 
     @Test
@@ -17,14 +16,15 @@ class LottosTest {
         // given
         val fakeWinningNumbers = listOf(1, 2, 3, 4, 5, 6)
 
-        val lottos = Lottos(listOf(Lotto(fakeWinningNumbers), Lotto(listOf(9, 10, 11, 12, 13, 14))))
-        val winningNumbers = fakeWinningNumbers.map {  LottoNumber(it) }
+        val lottos = Lottos(listOf(Lotto.from(fakeWinningNumbers), Lotto.from(listOf(9, 10, 11, 12, 13, 14))))
+        val winningLotto = fakeWinningNumbers.map { LottoNumber(it) }
         val bonusNumber = LottoNumber(9)
+        val winningNumbers = WinningNumbers(winningLotto, bonusNumber)
 
         // when
-        val prizes = lottos.checkWinningResult(winningNumbers, bonusNumber).prizes
+        val prizes = lottos.checkWinningResult(winningNumbers).prizes
 
         // then
-        assertThat(prizes).hasSize(1)
+        assert(prizes.size == 1)
     }
 }

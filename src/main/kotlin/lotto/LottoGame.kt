@@ -1,38 +1,31 @@
 package lotto
 
-import lotto.domain.LottoNumber
 import lotto.domain.Lottos
+import lotto.domain.WinningNumbers
 import lotto.view.InputView
 import lotto.view.OutputView
 
-class LottoGame(val input: InputView, val output: OutputView) {
+class LottoGame(private val input: InputView, private val output: OutputView) {
 
     fun start() {
         val lottos = generateLottos()
-        val (winningNumbers, bonusNumber) = readWinningNumbers()
-        showGameResult(lottos, winningNumbers, bonusNumber)
+        val winningNumbers = input.readWinningNumber()
+        showGameResult(lottos, winningNumbers)
     }
 
     private fun generateLottos(): Lottos {
         val purchaseAmount = input.readPurchaseAmount()
-        val lottoCount = purchaseAmount.getLottoAmount()
-        val lottos = Lottos.from(lottoCount)
+        val lottoAmount = purchaseAmount.lottoAmount
+        val lottos = Lottos.from(lottoAmount)
         output.printGeneratedLottos(lottos)
         return lottos
     }
 
-    private fun readWinningNumbers(): Pair<List<LottoNumber>, LottoNumber> {
-        val winningNumbers = input.readWinningNumbers()
-        val bonusNumber = input.readBonusNumber()
-        return Pair(winningNumbers, bonusNumber)
-    }
-
     private fun showGameResult(
         lottos: Lottos,
-        winningNumbers: List<LottoNumber>,
-        bonusNumber: LottoNumber
+        winningNumbers: WinningNumbers,
     ) {
-        val result = lottos.checkWinningResult(winningNumbers, bonusNumber)
+        val result = lottos.checkWinningResult(winningNumbers)
         output.printWinningStatistics(result.prizes)
         output.printRevenue(result.revenue)
     }

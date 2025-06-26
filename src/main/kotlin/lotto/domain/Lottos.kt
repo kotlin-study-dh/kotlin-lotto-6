@@ -5,12 +5,16 @@ import camp.nextstep.edu.missionutils.Randoms
 class Lottos(items: List<Lotto>) {
     val items: List<Lotto> = items.toList()
 
-    fun checkWinningResult(winningNumbers: List<LottoNumber>, bonusNumber: LottoNumber): LottoResult {
-        val prizes = items.mapNotNull { lotto ->
-            val matchedCount = lotto.match(winningNumbers)
-            val containsBonus = lotto.contains(bonusNumber)
-            Prize.of(matchedCount, containsBonus)
-        }
+    fun checkWinningResult(winningNumbers: WinningNumbers): LottoResult {
+        val (winningLotto, bonusNumber) = winningNumbers
+        val prizes = items
+            .map { lotto ->
+                val matchedCount = lotto.match(winningLotto)
+                val containsBonus = lotto.contains(bonusNumber)
+                Prize.of(matchedCount, containsBonus)
+            }
+            .filterNot { prize -> prize == Prize.NOTHING }
+
         return LottoResult.of(prizes, LottoPurchaseAmount.from(items.size))
     }
 
@@ -27,7 +31,7 @@ class Lottos(items: List<Lotto>) {
                 LottoNumber.MAX_VALUE,
                 Lotto.SIZE_OF_LOTTO_NUMBERS
             )
-            return Lotto(numbers)
+            return Lotto.from(numbers)
         }
     }
 }

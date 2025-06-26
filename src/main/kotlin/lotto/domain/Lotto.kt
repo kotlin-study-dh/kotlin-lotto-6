@@ -1,22 +1,22 @@
 package lotto.domain
 
-class Lotto(numbers: List<Int>) {
-    private val _lottoNumbers: List<LottoNumber> = numbers.map { LottoNumber(it) }
-    val lottoNumbers: List<LottoNumber>
-        get() = _lottoNumbers.toList()
-
+class Lotto(private val lottoNumbers: List<LottoNumber>) {
 
     init {
-        require(numbers.size == SIZE_OF_LOTTO_NUMBERS) { "The number of lotto numbers must be $SIZE_OF_LOTTO_NUMBERS." }
-        require(numbers.distinct().size == SIZE_OF_LOTTO_NUMBERS) { "Lotto numbers must be unique." }
+        require(lottoNumbers.size == SIZE_OF_LOTTO_NUMBERS) { "The number of lotto numbers must be $SIZE_OF_LOTTO_NUMBERS." }
+        require(lottoNumbers.distinct().size == lottoNumbers.size) { "Lotto numbers must be unique." }
     }
 
-    fun match(winningNumbers: List<LottoNumber>): Int = _lottoNumbers.count { winningNumbers.contains(it) }
+    fun match(winningNumbers: List<LottoNumber>): Int = lottoNumbers.count { winningNumbers.contains(it) }
 
-    fun contains(number: LottoNumber): Boolean = _lottoNumbers.contains(number)
+    fun contains(number: LottoNumber): Boolean = lottoNumbers.contains(number)
+
+    fun getNumbers() = lottoNumbers.map { it.number }
 
     companion object {
         const val SIZE_OF_LOTTO_NUMBERS = 6
+
+        fun from(numbers: List<Int>) = Lotto(numbers.map { LottoNumber(it) })
     }
 
 }

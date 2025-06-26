@@ -8,28 +8,32 @@ class OutputView {
 
     fun printGeneratedLottos(lottos: Lottos) {
         println("${lottos.items.size}개를 구매했습니다.")
-        lottos.items.forEach { it ->
-            val sorted = it.lottoNumbers.map { it.number }.sorted()
-            println("[${sorted.joinToString(", ")}]")
-        }
+        lottos.items.forEach { println(it.getNumbers().sorted()) }
     }
 
     fun printWinningStatistics(prizes: List<Prize>) {
-        val prizeToCount = Prize.entries.sortedBy { it.matchedCount }
-            .associateWith { prize -> prizes.count { it == prize } }
         println("당첨 통계")
         println("---")
 
-        prizeToCount.forEach { prize, count ->
-            println(
-                "${prize.matchedCount}개 일치${if (prize.shouldBonusMatch)", 보너스 볼 일치" else ""} (${
-                    String.format(
-                        "%,d",
-                        prize.reward
-                    )
-                }원) - ${count}개"
-            )
+        val prizeToCount = Prize.entries
+            .filterNot { it == Prize.NOTHING }
+            .sortedBy { it.reward }
+            .associateWith { prize -> prizes.count { it == prize } }
+
+        prizeToCount.forEach { (prize, count) ->
+            println("${formatPrize(prize)} - ${count}개")
         }
+    }
+
+    private fun formatPrize(prize: Prize): String {
+        val matchText = "${prize.shouldMatchedAtLeast}개 일치"
+        val bonusText = if (prize.shouldBonusMatch) ", 보너스 볼 일치" else ""
+        val rewardText = "(${formatReward(prize.reward)}원)"
+        return "$matchText$bonusText $rewardText"
+    }
+
+    private fun formatReward(reward: Long): String {
+        return String.format("%,d", reward)
     }
 
     fun printRevenue(revenue: Double) {
